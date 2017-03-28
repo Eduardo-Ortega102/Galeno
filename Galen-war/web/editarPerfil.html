@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Editar Perfil</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="estilos.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1><a href="index.html">Galeno</a></h1>
+        <ul>
+            <li><p>Nombre del paciente</p></li>
+            <li><a href="gestionarCita.html">Gestionar Cita</a></li>
+            <li><a href="historialClinico.html">Historial Clínico</a></li>
+            <li><a href="misMedicos.html">Gestionar Médicos</a></li>
+            <li><a href="misRecetas.html">Recetas</a></li>
+            <li><a href="editarPerfil.html">Editar Perfil</a></li>
+            <li><a href="logout.html">Cerrar Sesión</a></li>
+        </ul>
+        <h2>Editar Perfil de Usuario</h2>
+        <form action="" method="post" onsubmit="return perfil();">
+            <fieldset>
+                <legend>Nombre y Apellidos</legend>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" value="Nombre Usuario"/>
+                <label for="apellidos">Apellidos</label>
+                <input type="text" name="apellidos" id="apellidos" value="Apellidos"/><br/>
+            </fieldset>
+            <fieldset>
+                <legend>Contraseña y Correo Electrónico</legend>
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" name="correo" id="correo" value="Correo Electrónico"/>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" value="Contraseña"/><br/>
+            </fieldset>
+            <fieldset>
+                <legend>DNI, Fecha de Nacimiento y Teléfono</legend>
+                <label for="dni">DNI</label>
+                <input type="number" name="dni" id="dni" value=""/>
+                <label for="fecha">Fecha de Nacimiento</label>
+                <input type="date" name="fecha" id="fecha" value=""/>
+                <label for="telefono">Telefono</label>
+                <input type="tel" name="telefono" id="telefono" value="telefono"/><br/>
+            </fieldset>
+                <input type="submit" id="Guardar" value="Guardar Cambios"/>
+                <input type="submit" id="Cancelar" value="Cancelar"/>
+        </form>
+    </body>
+</html>
