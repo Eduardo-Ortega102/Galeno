@@ -14,7 +14,7 @@
                 <table cellspacing="0" role="presentation">
                     <tbody>
                         <tr>
-                            <td><label for="user">Nombre de usuario</label></td>
+                            <td><label for="user">Correo electr&oacute;nico</label></td>
                             <td colspan="2"><label for="pass">Contraseña</label></td>
                         </tr>
                         <tr>
