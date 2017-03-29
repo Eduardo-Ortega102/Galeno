@@ -33,7 +33,11 @@
         <%
             if (request.getParameter("error") != null){
                 out.println("<div class=\"alert alert-danger\">");
-                out.println("Usuario o contraseña incorrectos");
+                out.println("<strong>Error!</strong> Usuario o contraseña incorrectos");
+                out.println("</div>");
+            } else if (request.getParameter("sessionError") != null){
+                out.println("<div class=\"alert alert-warning\">");
+                out.println("<strong>Error!</strong> Para acceder a la aplicaci&oacute;n debe iniciar sesi&oacute;n");
                 out.println("</div>");
             }
         %>

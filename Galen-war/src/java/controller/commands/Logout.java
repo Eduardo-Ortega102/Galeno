@@ -7,7 +7,7 @@ public class Logout extends FrontCommand{
     @Override
     public void process() {
         HttpSession session = request.getSession();
-        session.removeAttribute("user"); // Quizá esta instrucción no sea necesaria
+        session.removeAttribute("user"); 
         session.invalidate();
         forward("/index.jsp");
     }

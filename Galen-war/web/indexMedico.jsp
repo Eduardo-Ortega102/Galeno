@@ -1,3 +1,20 @@
+<%@page import="entities.Medico"%>
+<%!
+    private boolean existSession(HttpServletRequest request){
+        return request.getSession().getAttribute("user") != null;
+    }
+
+    private String getName(HttpSession session){
+        Medico medico = (Medico) session.getAttribute("user");
+        return medico.getNombre() + " " + medico.getApellido();
+    }
+%>
+<%
+    if (!existSession(request)) {
+        request.getServletContext().getRequestDispatcher("/index.jsp?sessionError=true").forward(request, response);
+    }
+%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,11 +26,11 @@
     <body>
         <h1><a href="indexMedico.html">Galeno</a></h1>
         <ul>
-            <li><p>Nombre del médico</p></li>
+            <li><p>Nombre: <%=getName(request.getSession())%></p></li>
             <li><a href="gestionarAgenda.html">Gestionar Agenda</a></li>
-            <li><a href="gestionarHorario.html">Planificación</a></li>
+            <li><a href="gestionarHorario.html">Planificaci&oacute;n</a></li>
             <li><a href="editarPerfil.html">Editar Perfil</a></li>
-            <li><a href="logout.html">Cerrar Sesión</a></li>
+            <li><a href="FrontController?command=Logout">Cerrar Sesi&oacute;n</a></li>
         </ul>
         <h2>Agenda</h2>
         <!-- Comprobar si no existe algún registro de la planificación -->

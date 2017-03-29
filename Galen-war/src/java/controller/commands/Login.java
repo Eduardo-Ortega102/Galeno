@@ -15,8 +15,10 @@ public class Login extends FrontCommand {
 
     @Override
     public void process() {
-        if (existUser(createPatientFacade()) || existUser(createDoctorFacade())) 
+        if (existUser(createPatientFacade())) 
             forward("/profile.jsp");
+        else if(existUser(createDoctorFacade()))
+            forward("/indexMedico.jsp");
         else 
             forward("/index.jsp?error=1");
     }

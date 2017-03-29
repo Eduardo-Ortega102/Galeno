@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Perfil</title>
     </head>
     <body>
         <h1>este es el perfil de <%= request.getParameter("email") %></h1>
