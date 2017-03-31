@@ -39,6 +39,10 @@
                 out.println("<div class=\"alert alert-warning\">");
                 out.println("<strong>Error!</strong> Para acceder a la aplicaci&oacute;n debe iniciar sesi&oacute;n");
                 out.println("</div>");
+            } else if (request.getParameter("successfulRegister") != null){
+                out.println("<div class=\"alert alert-success\">");
+                out.println("<strong>Enhorabuena!</strong> Su registro se ha realizado con éxito");
+                out.println("</div>");
             }
         %>
         </nav>
@@ -52,7 +56,7 @@
                         En el momento en el que se registre, creará su historial clínico con los datos más relevantes, y con unos sencillos pasos, podrá
                         concertar citas con su médico. Etc, etc, etc
                     </p>
-                    <p><a class="btn btn-primary btn-lg" href="FrontController?command=Register" role="button">Registrate ya »</a></p>
+                    <p><a class="btn btn-primary btn-lg" href="register.jsp" role="button">Registrate ya »</a></p>
                 </div>
             </div>
             <section class="centerdesk">

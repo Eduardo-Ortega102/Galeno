@@ -1,15 +1,10 @@
 package controller.commands;
 
 import beans.AbstractFacade;
-import beans.MedicoFacade;
-import beans.PacienteFacade;
 import entities.User;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
+import static controller.FacadeFactory.*;
 
 public class Login extends FrontCommand {
 
@@ -21,24 +16,6 @@ public class Login extends FrontCommand {
             forward("/indexMedico.jsp");
         else 
             forward("/index.jsp?error=1");
-    }
-    
-    private PacienteFacade createPacienteFacade() {
-        try {
-            return (PacienteFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/PacienteFacade");
-        } catch (NamingException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    private MedicoFacade createMedicoFacade() {
-        try {
-            return (MedicoFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/MedicoFacade");
-        } catch (NamingException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
     
     private boolean existUser(AbstractFacade facade) {
