@@ -1,3 +1,4 @@
+<%@page import="entities.User"%>
 <%@page import="entities.Medico"%>
 <%@page import="entities.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,27 +23,27 @@
     }
 
     private String dni(Object user) {
-        return user instanceof Medico ? ((Medico) user).getDni() : ((Paciente) user).getDni();
+        return ((User) user).getDni();
     }
 
     private String name(Object user) {
-        return user instanceof Medico ? ((Medico) user).getNombre() : ((Paciente) user).getNombre();
+        return ((User) user).getNombre();
     }
 
     private String surname(Object user) {
-        return user instanceof Medico ? ((Medico) user).getApellido() : ((Paciente) user).getApellido();
+        return ((User) user).getApellido();
     }
 
     private Integer phone(Object user) {
-        return user instanceof Medico ? ((Medico) user).getTelefono() : ((Paciente) user).getTelefono();
+        return ((User) user).getTelefono();
     }
 
     private String email(Object user) {
-        return user instanceof Medico ? ((Medico) user).getEmail() : ((Paciente) user).getEmail();
+        return ((User) user).getEmail();
     }
 
     private String password(Object user) {
-        return user instanceof Medico ? ((Medico) user).getPassword() : ((Paciente) user).getPassword();
+        return ((User) user).getPassword();
     }
 %>
 <!DOCTYPE html>
@@ -54,6 +55,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        
         <jsp:include page="/WEB-INF/header.jsp"/>
 
         <h2>Editar Perfil de Usuario</h2>

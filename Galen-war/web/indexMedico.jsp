@@ -24,14 +24,10 @@
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <h1><a href="indexMedico.html">Galeno</a></h1>
-        <ul>
-            <li><p>Nombre: <%=getName(request.getSession())%></p></li>
-            <li><a href="gestionarAgenda.html">Gestionar Agenda</a></li>
-            <li><a href="gestionarHorario.html">Planificaci&oacute;n</a></li>
-            <li><a href="editarPerfil.jsp">Editar Perfil</a></li>
-            <li><a href="FrontController?command=Logout">Cerrar Sesi&oacute;n</a></li>
-        </ul>
+        
+        <jsp:include page="/WEB-INF/header.jsp"/>
+
+        
         <h2>Agenda</h2>
         <!-- Comprobar si no existe algún registro de la planificación -->
         <a href="crearAgenda.html" hidden="">Crear Agenda</a>
