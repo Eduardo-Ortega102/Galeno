@@ -20,13 +20,13 @@
         }
 
     private String printMenu(Object user) {
-        return type(user).equals("Medico") ? "<li><a href=\"gestionarCita.html\">Gestionar Cita</a></li>"
-                + "<li><a href=\"historialClinico.html\">Historial Clínico</a></li>"
-                + "<li><a href=\"misMedicos.html\">Gestionar Médicos</a></li>"
-                + "<li><a href=\"misRecetas.html\">Recetas</a></li>" 
+        return type(user).equals("Medico") ? "<li><a href=\"gestionarCita.jsp\">Gestionar Cita</a></li>"
+                + "<li><a href=\"historialClinico.jsp\">Historial Clínico</a></li>"
+                + "<li><a href=\"misMedicos.jsp\">Gestionar Médicos</a></li>"
+                + "<li><a href=\"misRecetas.jsp\">Recetas</a></li>" 
                 : 
-                "<li><a href=\"gestionarAgenda.html\">Gestionar Agenda</a></li>"
-                + "<li><a href=\"gestionarHorario.html\">Planificaci&oacute;n</a></li>";
+                "<li><a href=\"gestionarAgenda.jsp\">Gestionar Agenda</a></li>"
+                + "<li><a href=\"gestionarHorario.jsp\">Planificaci&oacute;n</a></li>";
     }
 
 %>

@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,14 +8,8 @@
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <h1><a href="indexMedico.html">Galeno</a></h1>
-        <ul>
-            <li><p>Nombre del médico</p></li>
-            <li><a href="gestionarAgenda.html">Gestionar Agenda</a></li>
-            <li><a href="gestionarHorario.html">Planificación</a></li>
-            <li><a href="editarPerfil.html">Editar Perfil</a></li>
-            <li><a href="logout.html">Cerrar Sesión</a></li>
-        </ul>
+        <jsp:include page="/WEB-INF/header.jsp"/>
+        
         <h2>Planificación</h2>
         <table>
             <button><a href="">Agregar</a></button>

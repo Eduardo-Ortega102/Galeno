@@ -1,12 +1,19 @@
+<%-- 
+    Document   : historialClinico
+    Created on : 31-mar-2017, 14:47:22
+    Author     : Mictlan
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Perfil</title>
+        <title>Historial</title>
     </head>
     <body>
         <jsp:include page="/WEB-INF/header.jsp"/>
-        <h1>este es el perfil de <%= request.getParameter("email") %></h1>
+        
+        
     </body>
 </html>
