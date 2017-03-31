@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Medico.findByEmail", query = "SELECT m FROM Medico m WHERE m.email = :email")
     , @NamedQuery(name = "Medico.findByPassword", query = "SELECT m FROM Medico m WHERE m.password = :password")
     , @NamedQuery(name = "Medico.findByLocalizacion", query = "SELECT m FROM Medico m WHERE m.localizacion = :localizacion")})
-public class Medico implements Serializable {
+public class Medico implements Serializable, User {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -185,5 +185,5 @@ public class Medico implements Serializable {
     public String toString() {
         return "entities.Medico[ colegiado=" + colegiado + " ]";
     }
-    
+
 }

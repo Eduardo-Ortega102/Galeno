@@ -29,7 +29,7 @@
             <li><p>Nombre: <%=getName(request.getSession())%></p></li>
             <li><a href="gestionarAgenda.html">Gestionar Agenda</a></li>
             <li><a href="gestionarHorario.html">Planificaci&oacute;n</a></li>
-            <li><a href="editarPerfil.html">Editar Perfil</a></li>
+            <li><a href="editarPerfil.jsp">Editar Perfil</a></li>
             <li><a href="FrontController?command=Logout">Cerrar Sesi&oacute;n</a></li>
         </ul>
         <h2>Agenda</h2>

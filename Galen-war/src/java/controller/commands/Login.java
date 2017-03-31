@@ -3,8 +3,8 @@ package controller.commands;
 import beans.AbstractFacade;
 import beans.MedicoFacade;
 import beans.PacienteFacade;
-import entities.Medico;
-import entities.Paciente;
+import entities.User;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -15,15 +15,15 @@ public class Login extends FrontCommand {
 
     @Override
     public void process() {
-        if (existUser(createPatientFacade())) 
+        if (existUser(createPacienteFacade())) 
             forward("/profile.jsp");
-        else if(existUser(createDoctorFacade()))
+        else if(existUser(createMedicoFacade()))
             forward("/indexMedico.jsp");
         else 
             forward("/index.jsp?error=1");
     }
     
-    private PacienteFacade createPatientFacade() {
+    private PacienteFacade createPacienteFacade() {
         try {
             return (PacienteFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/PacienteFacade");
         } catch (NamingException ex) {
@@ -32,7 +32,7 @@ public class Login extends FrontCommand {
         return null;
     }
     
-    private MedicoFacade createDoctorFacade() {
+    private MedicoFacade createMedicoFacade() {
         try {
             return (MedicoFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/MedicoFacade");
         } catch (NamingException ex) {
@@ -42,35 +42,19 @@ public class Login extends FrontCommand {
     }
     
     private boolean existUser(AbstractFacade facade) {
-        Object user = findUser(facade, request.getParameter("email"), request.getParameter("password"));
+        User user = findUser(facade, request.getParameter("email"), request.getParameter("password"));
         if (user == null) return false;
         HttpSession session = request.getSession(true);
         session.setAttribute("user", user);
         return true;
     }
 
-    private Object findUser(AbstractFacade facade, String email, String password) {
-        return (facade instanceof PacienteFacade) ? 
-                findPatient((PacienteFacade) facade, email, password) : 
-                findDoctor((MedicoFacade) facade, email, password);
-    }
-    
-    private Paciente findPatient(PacienteFacade facade, String email, String password) {
-        for (Paciente paciente : facade.findAll()) 
-            if (paciente.getEmail().equals(email)){
-                if (paciente.getPassword().equals(password)) return paciente;
+    private User findUser(AbstractFacade facade, String email, String password) {
+        for (User user : (List<User>) facade.findAll())
+            if (user.getEmail().equals(email)){
+                if (user.getPassword().equals(password)) return user;
                 break;
             }
         return null;
     }
-    
-    private Medico findDoctor(MedicoFacade facade, String email, String password) {
-        for (Medico medico : facade.findAll()) 
-            if (medico.getEmail().equals(email)) {
-                if (medico.getPassword().equals(password)) return medico;
-                break;
-            }
-        return null;
-    }
- 
 }
