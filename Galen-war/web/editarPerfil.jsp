@@ -6,15 +6,15 @@
     private String getLastFields(Object user) {
         if (user instanceof Medico) {
             Medico medico = (Medico) user;
-            return "<label for=\"colegiado\">Numero Colegiado</label> "
-                    + "<input type=\"text\" name=\"colegiado\" id=\"colegiado\" value=\"" + medico.getColegiado() + "\"/>"
-                    + "<label for=\"localizacion\">Localizacion</label> "
-                    + "<input type=\"text\" name=\"localizacion\" id=\"localizacion\" value=\"" + medico.getLocalizacion() + "\"/>"
+            return "<label for=\"ncolegiadoMedico\">Numero Colegiado</label> "
+                    + "<input readonly type=\"text\" name=\"ncolegiadoMedico\" id=\"colegiado\" value=\"" + medico.getColegiado() + "\"/>"
+                    + "<label for=\"localizacionMedico\">Localizacion</label> "
+                    + "<input type=\"text\" name=\"localizacionMedico\" id=\"localizacion\" value=\"" + medico.getLocalizacion() + "\"/>"
                     + "<br/>";
         }
         Paciente paciente = (Paciente) user;
-        return "<label for=\"ssocial\">Numero Seguridad Social</label> "
-                + "<input type=\"text\" name=\"ssocial\" id=\"ssocial\" value=\"" + paciente.getSsocial() + "\"/>"
+        return "<label for=\"nseguridad\">Numero Seguridad Social</label> "
+                + "<input type=\"text\" name=\"nseguridad\" id=\"ssocial\" value=\"" + paciente.getSsocial() + "\"/>"
                 + "<br/>";
     }
 
@@ -55,7 +55,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        
+
         <jsp:include page="/WEB-INF/header.jsp"/>
 
         <h2>Editar Perfil de Usuario</h2>
@@ -64,25 +64,36 @@
             <input type="hidden" name="userType" value="<%=type(request.getSession().getAttribute("user"))%>" />
             <fieldset>
                 <legend>Datos personales</legend>
-                <label for="dni">DNI</label>
-                <input type="text" name="dni" id="dni" value="<%=dni(request.getSession().getAttribute("user"))%>"/>
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" value="<%=name(request.getSession().getAttribute("user"))%>"/>
-                <label for="apellidos">Apellidos</label>
-                <input type="text" name="apellidos" id="apellidos" value="<%=surname(request.getSession().getAttribute("user"))%>"/>
-                <label for="telefono">Telefono</label>
-                <input type="tel" name="telefono" id="telefono" value="<%=phone(request.getSession().getAttribute("user"))%>"/><br/>
+                <label for="dniUsuario">DNI</label>
+                <input readonly type="text" name="dniUsuario" id="dni" value="<%=dni(request.getSession().getAttribute("user"))%>"/>
+                <label for="nombreUsuario">Nombre</label>
+                <input type="text" name="nombreUsuario" id="nombre" value="<%=name(request.getSession().getAttribute("user"))%>"/>
+                <label for="apellidosUsuario">Apellidos</label>
+                <input type="text" name="apellidosUsuario" id="apellidos" value="<%=surname(request.getSession().getAttribute("user"))%>"/>
+                <label for="telefonoUsuario">Telefono</label>
+                <input type="tel" name="telefonoUsuario" id="telefono" value="<%=phone(request.getSession().getAttribute("user"))%>"/><br/>
                 <br/>
                 <%=getLastFields(request.getSession().getAttribute("user"))%>
             </fieldset>
             <fieldset>
                 <legend>Datos de la aplicación</legend>
-                <label for="correo">Correo Electrónico</label>
-                <input type="email" name="correo" id="correo" value="<%=email(request.getSession().getAttribute("user"))%>"/>
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" value="<%=password(request.getSession().getAttribute("user"))%>"/><br/>
+                <label for="emailUsuario">Correo Electrónico</label>
+                <input type="email" name="emailUsuario" id="correo" value="<%=email(request.getSession().getAttribute("user"))%>"/>
+                <label for="passwordUsuario">Contraseña</label>
+                <input type="password" name="passwordUsuario" id="password" value="<%=password(request.getSession().getAttribute("user"))%>"/><br/>
             </fieldset>
             <input type="submit" id="Guardar" value="Guardar Cambios"/>
         </form>
+        <%
+            if ("false".equals(request.getParameter("success"))) {
+                out.println("<div class=\"alert alert-danger\">");
+                out.println("<strong>Error!</strong> Algo ha ido mal");
+                out.println("</div>");
+            } else if ("true".equals(request.getParameter("success"))) {
+                out.println("<div class=\"alert alert-success\">");
+                out.println("<strong>Enhorabuena!</strong> Sus datos se han guardado con éxito");
+                out.println("</div>");
+            }
+        %>
     </body>
 </html>

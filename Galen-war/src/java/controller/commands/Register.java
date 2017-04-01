@@ -5,7 +5,10 @@ import beans.MedicoFacade;
 import beans.PacienteFacade;
 import entities.Medico;
 import entities.Paciente;
-import static controller.FacadeFactory.*;
+import static controller.EntityFactory.medico;
+import static controller.EntityFactory.paciente;
+import static controller.FacadeFactory.medicoFacade;
+import static controller.FacadeFactory.pacienteFacade;
 
 public class Register extends FrontCommand{
 
@@ -27,30 +30,15 @@ public class Register extends FrontCommand{
     }
 
     private void crearPaciente() {
-        PacienteFacade facade = createPacienteFacade();
+        PacienteFacade facade = pacienteFacade();
         if (existPatient(facade)) errorRegistro();
-        String dni = request.getParameter("dniUsuario");
-        String nombre = request.getParameter("nombreUsuario");
-        String apellido = request.getParameter("apellidosUsuario");
-        String ssocial = request.getParameter("nseguridad");
-        int telefono = Integer.parseInt(request.getParameter("telefonoUsuario"));
-        String email = request.getParameter("emailUsuario");
-        String password = request.getParameter("passwordUsuario");
-        facade.create(new Paciente(dni, nombre, apellido, ssocial, telefono, email, password));
+        facade.create(paciente(request));
     }
 
     private void crearMedico() {
-        MedicoFacade facade = createMedicoFacade();
+        MedicoFacade facade = medicoFacade();
         if (existDoctor(facade)) errorRegistro();
-        String colegiado = request.getParameter("ncolegiadoMedico");
-        String nombre = request.getParameter("nombreUsuario");
-        String apellido = request.getParameter("apellidosUsuario");
-        String dni = request.getParameter("dniUsuario");
-        int telefono = Integer.parseInt(request.getParameter("telefonoUsuario"));
-        String email = request.getParameter("emailUsuario");
-        String password = request.getParameter("passwordUsuario");
-        String localizacion = request.getParameter("localizacionMedico");
-        facade.create(new Medico(colegiado, nombre, apellido, dni, telefono, email, password, localizacion));
+        facade.create(medico(request));
     }
 
     private boolean existPatient(PacienteFacade miPaciente) {

@@ -10,22 +10,28 @@ import javax.naming.NamingException;
 
 public class FacadeFactory {
 
-    public static PacienteFacade createPacienteFacade() {
+    private static PacienteFacade pacienteFacade;
+    private static MedicoFacade medicoFacade;
+
+    public static PacienteFacade pacienteFacade() {
+        if (pacienteFacade != null) return pacienteFacade;
         try {
-            return (PacienteFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/PacienteFacade");
+            pacienteFacade = (PacienteFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/PacienteFacade");
+            return pacienteFacade;
         } catch (NamingException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
-    public static MedicoFacade createMedicoFacade() {
+    public static MedicoFacade medicoFacade() {
+        if (medicoFacade != null) return medicoFacade;
         try {
-            return (MedicoFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/MedicoFacade");
+            medicoFacade = (MedicoFacade) InitialContext.doLookup("java:global/Galen/Galen-ejb/MedicoFacade");
+            return medicoFacade;
         } catch (NamingException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-    
 }
