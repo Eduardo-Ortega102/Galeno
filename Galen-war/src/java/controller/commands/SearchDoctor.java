@@ -16,10 +16,7 @@ public class SearchDoctor extends FrontCommand {
 
     private void setAttribute(String field, Object value) {
         request.getSession().setAttribute(field, value);
-        if (field.equals("list"))
-            request.getSession().setAttribute("record", null);
-        else
-            request.getSession().setAttribute("list", null);
+        request.getSession().removeAttribute(field.equals("list") ? "record" : "list");
     }
 
 }
