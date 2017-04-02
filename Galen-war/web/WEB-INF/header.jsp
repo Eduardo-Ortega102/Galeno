@@ -16,17 +16,26 @@
     }
 
     private String printHomeLink(Object user) {
-            return type(user).equals("Medico") ? "<a href=\"indexMedico.jsp\">Galeno</a>" : "<a href=\"index.jsp\">Galeno";
-        }
+        return type(user).equals("Medico") ? "<a href=\"indexMedico.jsp\">Galeno</a>" : "<a href=\"index.jsp\">Galeno";
+    }
 
     private String printMenu(Object user) {
-        return type(user).equals("Medico") ? "<li><a href=\"gestionarCita.jsp\">Gestionar Cita</a></li>"
+        return type(user).equals("Paciente") ? "<li><a href=\"gestionarCita.jsp\">Gestionar Cita</a></li>"
                 + "<li><a href=\"historialClinico.jsp\">Historial Clínico</a></li>"
                 + "<li><a href=\"misMedicos.jsp\">Gestionar Médicos</a></li>"
-                + "<li><a href=\"misRecetas.jsp\">Recetas</a></li>" 
+                + "<li><a href=\"misRecetas.jsp\">Recetas</a></li>"
+                + "<li>" + searchDoctor() + "</li>"
                 : 
                 "<li><a href=\"gestionarAgenda.jsp\">Gestionar Agenda</a></li>"
                 + "<li><a href=\"gestionarHorario.jsp\">Planificaci&oacute;n</a></li>";
+    }
+
+    private String searchDoctor() {
+        return "<form action=\"FrontController\" method=\"POST\">"
+                + "<input type=\"hidden\" name=\"command\" value=\"SearchDoctor\"/>"
+                + "<input type=\"text\" name=\"colegiado\" placeholder=\"nºcolegiado\"/>"
+                + "<button type=\"submit\">Buscar</button>"
+                + "</form>";
     }
 
 %>
