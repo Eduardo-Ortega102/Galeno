@@ -1,7 +1,6 @@
 package controller;
 
 import beans.*;
-import controller.commands.Login;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -20,7 +19,7 @@ public class FacadeFactory {
         try {
             return InitialContext.doLookup("java:global/Galen/Galen-ejb/" + facade);
         } catch (NamingException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FacadeFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
