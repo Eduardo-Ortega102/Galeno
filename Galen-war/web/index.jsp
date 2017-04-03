@@ -52,9 +52,7 @@
                 <div class="container">
                     <h1>Galeno</h1>
                     <p> 
-                        Galeno es una aplicación que le permite llevar a cabo una gestión de su actividad clínica a través de diversas utilidades.
-                        En el momento en el que se registre, creará su historial clínico con los datos más relevantes, y con unos sencillos pasos, podrá
-                        concertar citas con su médico. Etc, etc, etc
+                        Gaess
                     </p>
                     <p><a class="btn btn-primary btn-lg" href="register.jsp" role="button">Registrate ya »</a></p>
                 </div>
