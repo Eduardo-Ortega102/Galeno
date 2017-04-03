@@ -45,43 +45,7 @@
     }
 %>
 
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>Panel</title>
-
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
-    <!-- DataTables CSS -->
-    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-    
-    </head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -104,7 +68,7 @@
                         <li><a href="editarPerfil.jsp"><i class="fa fa-user fa-fw"></i> Mi Perfil</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="FrontController?command=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -161,16 +125,5 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-        <!--
-    <h1><%=printHomeLink(request.getSession().getAttribute("user"))%></h1>
-
-    <ul>
-        <li><p>Usuario: <%=getName(request.getSession())%></p></li>
-        <li><a href="editarPerfil.jsp">Editar datos del perfil</a></li>
-
-        <%=printMenu(request.getSession().getAttribute("user"))%>
-
-        <li><a href="FrontController?command=Logout">Cerrar Sesi&oacute;n</a></li>
-    </ul>
-    -->
+            
         
