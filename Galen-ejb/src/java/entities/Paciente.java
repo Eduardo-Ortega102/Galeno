@@ -1,16 +1,20 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "PACIENTE")
@@ -25,6 +29,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Paciente.findByEmail", query = "SELECT p FROM Paciente p WHERE p.email = :email")
     , @NamedQuery(name = "Paciente.findByPassword", query = "SELECT p FROM Paciente p WHERE p.password = :password")})
 public class Paciente implements Serializable, User {
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "NACIMIENTO")
+    private String nacimiento;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
+    private Collection<Cita> citaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
+    private Collection<Historial> historialCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -161,6 +175,32 @@ public class Paciente implements Serializable, User {
     @Override
     public String toString() {
         return "entities.Paciente[ dni=" + dni + " ]";
+    }
+
+    public String getNacimiento() {
+        return nacimiento;
+    }
+
+    public void setNacimiento(String nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    @XmlTransient
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
+    }
+
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
+    }
+
+    @XmlTransient
+    public Collection<Historial> getHistorialCollection() {
+        return historialCollection;
+    }
+
+    public void setHistorialCollection(Collection<Historial> historialCollection) {
+        this.historialCollection = historialCollection;
     }
     
 }

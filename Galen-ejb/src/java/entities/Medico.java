@@ -6,16 +6,20 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,6 +39,22 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Medico.findByPassword", query = "SELECT m FROM Medico m WHERE m.password = :password")
     , @NamedQuery(name = "Medico.findByLocalizacion", query = "SELECT m FROM Medico m WHERE m.localizacion = :localizacion")})
 public class Medico implements Serializable, User {
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "ESPECIALIDAD")
+    private String especialidad;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "MINUTOSCONSULTA")
+    private int minutosconsulta;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medico")
+    private Collection<Horario> horarioCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medico")
+    private Collection<Cita> citaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medico")
+    private Collection<Historia> historiaCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -184,6 +204,49 @@ public class Medico implements Serializable, User {
     @Override
     public String toString() {
         return "entities.Medico[ colegiado=" + colegiado + " ]";
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public int getMinutosconsulta() {
+        return minutosconsulta;
+    }
+
+    public void setMinutosconsulta(int minutosconsulta) {
+        this.minutosconsulta = minutosconsulta;
+    }
+
+    @XmlTransient
+    public Collection<Horario> getHorarioCollection() {
+        return horarioCollection;
+    }
+
+    public void setHorarioCollection(Collection<Horario> horarioCollection) {
+        this.horarioCollection = horarioCollection;
+    }
+
+    @XmlTransient
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
+    }
+
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
+    }
+
+    @XmlTransient
+    public Collection<Historia> getHistoriaCollection() {
+        return historiaCollection;
+    }
+
+    public void setHistoriaCollection(Collection<Historia> historiaCollection) {
+        this.historiaCollection = historiaCollection;
     }
 
 }

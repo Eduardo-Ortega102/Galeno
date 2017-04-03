@@ -5,7 +5,7 @@
  */
 package beans;
 
-import entities.Paciente;
+import entities.Historia;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Mictlan
  */
 @Stateless
-public class PacienteFacade extends AbstractFacade<Paciente> {
+public class HistoriaFacade extends AbstractFacade<Historia> {
 
     @PersistenceContext(unitName = "Galen-ejbPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class PacienteFacade extends AbstractFacade<Paciente> {
         return em;
     }
 
-    public PacienteFacade() {
-        super(Paciente.class);
+    public HistoriaFacade() {
+        super(Historia.class);
     }
     
 }
