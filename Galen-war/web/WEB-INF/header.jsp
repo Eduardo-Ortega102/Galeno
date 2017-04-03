@@ -16,7 +16,7 @@
     }
 
     private String printHomeLink(Object user) {
-        return type(user).equals("Medico") ? "<a href=\"indexMedico.jsp\">Galeno</a>" : "<a href=\"index.jsp\">Galeno";
+        return type(user).equals("Medico") ? "<a href=\"indexMedico.jsp\">Galeno</a>" : "<a href=\"indexPaciente.jsp\">Galeno";
     }
 
     private String printMenu(Object user) {
@@ -49,7 +49,6 @@
 <h1><%=printHomeLink(request.getSession().getAttribute("user"))%></h1>
 
 <ul>
-    <li><p>Usuario: <%=getName(request.getSession())%></p></li>
     <li><a href="editarPerfil.jsp">Editar datos del perfil</a></li>
 
     <%=printMenu(request.getSession().getAttribute("user"))%>
