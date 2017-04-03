@@ -11,7 +11,7 @@
     <body>
         <nav class="navbar navbar-default">
             <div class="container">
-                <form class="navbar-form navbar-right"action="FrontController" method="POST">
+                <form class="navbar-form navbar-right" action="FrontController" method="POST">
                     <input type="hidden" name="command" value="Login" />
                     <div class="form-group">
                         <label class="sr-only" for="user">Email</label>

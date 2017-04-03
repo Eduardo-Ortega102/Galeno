@@ -85,8 +85,7 @@ public class Paciente implements Serializable, User {
         this.dni = dni;
     }
 
-    
-    public Paciente(String dni, String nombre, String apellido, String ssocial, int telefono, String email, String password) {
+    public Paciente(String dni, String nombre, String apellido, String ssocial, int telefono, String email, String password, String nacimiento) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -94,6 +93,7 @@ public class Paciente implements Serializable, User {
         this.telefono = telefono;
         this.email = email;
         this.password = password;
+        this.nacimiento = nacimiento;
     }
 
     public String getDni() {

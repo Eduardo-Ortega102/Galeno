@@ -66,9 +66,11 @@ public class Historial implements Serializable {
         this.id = id;
     }
 
-    public Historial(Integer id, String fechacreacion, String alergias) {
+    //Hay que corregir esto. El problema creo q esta en dniPaciente o en la fecha. Casi seguro q en lo primero.
+    public Historial(Integer id, String fechacreacion, Paciente dniPaciente, String alergias) {
         this.id = id;
         this.fechacreacion = fechacreacion;
+        this.paciente = dniPaciente;
         this.alergias = alergias;
     }
 

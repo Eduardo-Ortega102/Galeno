@@ -117,6 +117,21 @@ public class Medico implements Serializable, User {
         this.localizacion = localizacion;
     }
 
+    public Medico(String colegiado, String nombre, String apellido, String dni, int telefono, String email, String password, String localizacion, String especialidad, int minutosconsulta) {
+        this.colegiado = colegiado;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.email = email;
+        this.password = password;
+        this.localizacion = localizacion;
+        this.especialidad = especialidad;
+        this.minutosconsulta = minutosconsulta;
+    }
+    
+    
+
     public String getColegiado() {
         return colegiado;
     }

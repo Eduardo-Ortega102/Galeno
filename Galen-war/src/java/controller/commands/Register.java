@@ -1,14 +1,17 @@
 
 package controller.commands;
 
+import beans.HistorialFacade;
 import beans.MedicoFacade;
 import beans.PacienteFacade;
 import entities.Medico;
 import entities.Paciente;
 import static controller.EntityFactory.medico;
 import static controller.EntityFactory.paciente;
+import static controller.EntityFactory.historial;
 import static controller.FacadeFactory.medicoFacade;
 import static controller.FacadeFactory.pacienteFacade;
+import static controller.FacadeFactory.historialFacade;
 
 public class Register extends FrontCommand{
 
@@ -31,8 +34,10 @@ public class Register extends FrontCommand{
 
     private void crearPaciente() {
         PacienteFacade facade = pacienteFacade();
+        //HistorialFacade facadeHistory = historialFacade();
         if (existPatient(facade)) errorRegistro();
         facade.create(paciente(request));
+        //facadeHistory.create(historial(request));
     }
 
     private void crearMedico() {
@@ -40,6 +45,7 @@ public class Register extends FrontCommand{
         if (existDoctor(facade)) errorRegistro();
         facade.create(medico(request));
     }
+    
 
     private boolean existPatient(PacienteFacade miPaciente) {
         for (Paciente paciente : miPaciente.findAll())

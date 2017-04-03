@@ -38,10 +38,6 @@
                 <input id="dniUsuario" name="dniUsuario" required="required" type="text" placeholder="11111111 X"/>
             </p>
             <p> 
-                <label>Fecha de nacimiento: </label>
-                <input id="nacimientoUsuario" name="nacimientoUsuario" required="required" type="date" value="1990-01-01"/>
-            </p>
-            <p> 
                 <label>Telefono: </label>
                 <input id="telefonoUsuario" name="telefonoUsuario" required="required" type="number" placeholder="123456789"/>
             </p>
@@ -50,15 +46,19 @@
                 <input type="radio" name="Roles" value="Medico" onclick="mostrar(this.value)" /><label> Médico </label>
             </p>
 
-            <div id="datosPaciente" style='display:none'=>
+            <div id="datosPaciente" style='display:none'>
                 <h4>Introduzca sus datos como paciente</h4>
                 <p> 
                     <label>Tu número de seguridad social: </label>
                     <input id="nseguridad" name="nseguridad" type="text" placeholder="" />
                 </p>
                 <p> 
+                    <label>Fecha de nacimiento: </label>
+                    <input id="nacimientoUsuario" name="nacimientoUsuario" required="required" type="date" value="1990-01-01"/>
+                </p>
+                <p> 
                     <label>Nombre las alergias y/o enfermedades que tiene(si deja el campo vacío se entiende que no tiene ninguna): </label>
-                    <input id="alergiasPaciente" name="alergiasUsuario" type="text" placeholder="" />
+                    <input id="alergiasPaciente" name="alergiasPaciente" type="text" placeholder="" />
                 </p>
             </div>
 
@@ -67,6 +67,14 @@
                 <p> 
                     <label>Tu número de colegiado: </label>
                     <input id="ncolegiadoMedico" name="ncolegiadoMedico" type="text" placeholder="" />
+                </p>
+                <p> 
+                    <label>Nombre cual es su especialidad: </label>
+                    <input id="especialidadMedico" name="especialidadMedico" type="text" placeholder="" />
+                </p>
+                <p> 
+                    <label>Escriba la cantidad de minutos que necesitará por consulta: </label>
+                    <input id="minutosConsulta" name="minutosConsulta" type="number" placeholder="15" />
                 </p>
                 <p> 
                     <label>Escriba la localización de sus consultas: </label>
@@ -92,13 +100,19 @@
                 if (rol === "Paciente") {
                     document.getElementById("datosPaciente").style.display = 'block';
                     document.getElementById("nseguridad").required = true;
+                    document.getElementById("nacimientoUsuario").required = true;
                     document.getElementById("datosMedico").style.display = 'none';
                     document.getElementById("ncolegiadoMedico", "localizacionMedico").required = false;
+                    document.getElementById("especialidadMedico").required = false;
+                    document.getElementById("minutosConsulta").required = false;
                 } else {
                     document.getElementById("datosMedico").style.display = 'block';
                     document.getElementById("ncolegiadoMedico", "localizacionMedico").required = true;
+                    document.getElementById("especialidadMedico").required = true;
+                    document.getElementById("minutosConsulta").required = true;
                     document.getElementById("datosPaciente").style.display = 'none';
                     document.getElementById("nseguridad").required = false;
+                    document.getElementById("nacimientoUsuario").required = false;
                 }
             }
             function confirmacion() {

@@ -1,20 +1,34 @@
 package controller;
 
+import entities.Historial;
 import entities.Medico;
 import entities.Paciente;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 public class EntityFactory {
-    
-    public static Medico medico(HttpServletRequest request){
+
+    public static Medico medico(HttpServletRequest request) {
         String colegiado = request.getParameter("ncolegiadoMedico");
         String localizacion = request.getParameter("localizacionMedico");
-        return new Medico(colegiado, nombre(request), apellidos(request), dni(request), telefono(request), email(request), password(request), localizacion);
+        String especialidad = request.getParameter("especialidadMedico");
+        int minutosConsulta = Integer.parseInt(request.getParameter("minutosConsulta"));
+        return new Medico(colegiado, nombre(request), apellidos(request), dni(request), telefono(request), email(request), password(request), localizacion, especialidad, minutosConsulta);
     }
-    
-    public static Paciente paciente(HttpServletRequest request){
+
+    public static Paciente paciente(HttpServletRequest request) {
         String ssocial = request.getParameter("nseguridad");
-        return new Paciente(dni(request), nombre(request), apellidos(request), ssocial, telefono(request), email(request), password(request));
+        String fechaNacimiento = (String) request.getParameter("nacimientoUsuario");
+        return new Paciente(dni(request), nombre(request), apellidos(request), ssocial, telefono(request), email(request), password(request), fechaNacimiento);
+    }
+
+    //Corregir esto. Paciente es el problema
+    public static Historial historial(HttpServletRequest request) {
+        int idHistorial = 3;
+        String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        String notas = request.getParameter("alergiasPaciente");
+        return new Historial(idHistorial, fecha, paciente(request),notas);
     }
 
     private static String dni(HttpServletRequest request) {
