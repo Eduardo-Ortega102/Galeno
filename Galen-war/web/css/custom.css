@@ -10,6 +10,17 @@
     
 }
 .centerdesk {
-        margin-top: 125px;
+        margin-top: 75px;
 	text-align: center;
+}
+
+.panel-default > .panel-heading-custom {
+        background: #26a888;
+}
+.panel-default > .panel-body-custom {
+        background: #26a888;
+}
+.panel-default > .panel-footer-custom {
+        background: #26a888;
+        text-align: right;
 }
