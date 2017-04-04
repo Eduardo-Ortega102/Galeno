@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import entities.Historial;
+import entities.Paciente;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Mictlan
- */
 @Stateless
 public class HistorialFacade extends AbstractFacade<Historial> {
 
@@ -29,4 +21,9 @@ public class HistorialFacade extends AbstractFacade<Historial> {
         super(Historial.class);
     }
     
+    public Historial findByPatient(String dni){
+        return  em.createNamedQuery("Historial.findByPaciente", Historial.class)
+                .setParameter("paciente", new Paciente(dni))
+                .getSingleResult();
+    }
 }

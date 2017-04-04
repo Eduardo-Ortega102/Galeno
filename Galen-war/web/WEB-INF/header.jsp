@@ -21,7 +21,7 @@
 
     private String printMenu(Object user) {
         return type(user).equals("Paciente") ? "<li><a href=\"gestionarCita.jsp\">Gestionar Cita</a></li>"
-                + "<li><a href=\"historialClinico.jsp\">Historial Clínico</a></li>"
+                + "<li><a href=\"FrontController?command=ShowHistory\">Historial Clínico</a></li>"
                 + "<li><a href=\"misMedicos.jsp\">Gestionar Médicos</a></li>"
                 + "<li><a href=\"misRecetas.jsp\">Recetas</a></li>"
                 + "<li>" + searchDoctor() + "</li>"

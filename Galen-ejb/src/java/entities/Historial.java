@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 import java.io.Serializable;
@@ -17,16 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Mictlan
- */
 @Entity
 @Table(name = "HISTORIAL")
 @XmlRootElement
@@ -34,6 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Historial.findAll", query = "SELECT h FROM Historial h")
     , @NamedQuery(name = "Historial.findById", query = "SELECT h FROM Historial h WHERE h.id = :id")
     , @NamedQuery(name = "Historial.findByFechacreacion", query = "SELECT h FROM Historial h WHERE h.fechacreacion = :fechacreacion")
+    , @NamedQuery(name = "Historial.findByPaciente", query = "SELECT h FROM Historial h WHERE h.paciente = :paciente")
     , @NamedQuery(name = "Historial.findByAlergias", query = "SELECT h FROM Historial h WHERE h.alergias = :alergias")})
 public class Historial implements Serializable {
 
@@ -56,7 +49,7 @@ public class Historial implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "historial")
     private Collection<Historia> historiaCollection;
     @JoinColumn(name = "PACIENTE", referencedColumnName = "DNI")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Paciente paciente;
 
     public Historial() {
