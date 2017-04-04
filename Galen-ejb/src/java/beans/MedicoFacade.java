@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import entities.Medico;
+import entities.User;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Mictlan
- */
 @Stateless
 public class MedicoFacade extends AbstractFacade<Medico> {
 
@@ -29,4 +22,12 @@ public class MedicoFacade extends AbstractFacade<Medico> {
         super(Medico.class);
     }
     
+    public User findByEmail(String email) {
+        try {
+            return em.createNamedQuery("Medico.findByEmail", Medico.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (NoResultException e) {}
+        return null;
+    }    
 }

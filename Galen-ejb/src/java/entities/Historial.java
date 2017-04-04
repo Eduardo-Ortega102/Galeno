@@ -6,35 +6,31 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mictlan
+ * @author usuario
  */
 @Entity
 @Table(name = "HISTORIAL")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Historial.findAll", query = "SELECT h FROM Historial h")
-    , @NamedQuery(name = "Historial.findById", query = "SELECT h FROM Historial h WHERE h.id = :id")
-    , @NamedQuery(name = "Historial.findByFechacreacion", query = "SELECT h FROM Historial h WHERE h.fechacreacion = :fechacreacion")
-    , @NamedQuery(name = "Historial.findByAlergias", query = "SELECT h FROM Historial h WHERE h.alergias = :alergias")})
+    @NamedQuery(name = "Historial.findAll", query = "SELECT h FROM Historial h"),
+    @NamedQuery(name = "Historial.findById", query = "SELECT h FROM Historial h WHERE h.id = :id"),
+    @NamedQuery(name = "Historial.findByFechacreacion", query = "SELECT h FROM Historial h WHERE h.fechacreacion = :fechacreacion"),
+    @NamedQuery(name = "Historial.findByAlergias", query = "SELECT h FROM Historial h WHERE h.alergias = :alergias")})
 public class Historial implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,10 +49,8 @@ public class Historial implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "ALERGIAS")
     private String alergias;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "historial")
-    private Collection<Historia> historiaCollection;
     @JoinColumn(name = "PACIENTE", referencedColumnName = "DNI")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Paciente paciente;
 
     public Historial() {
@@ -65,13 +59,18 @@ public class Historial implements Serializable {
     public Historial(Integer id) {
         this.id = id;
     }
-
-    //Hay que corregir esto. El problema creo q esta en dniPaciente o en la fecha. Casi seguro q en lo primero.
-    public Historial(Integer id, String fechacreacion, Paciente dniPaciente, String alergias) {
+/*
+    public Historial(Integer id, String fechacreacion, String alergias) {
         this.id = id;
         this.fechacreacion = fechacreacion;
-        this.paciente = dniPaciente;
         this.alergias = alergias;
+    }
+*/
+    public Historial(Integer id, String fechacreacion, String alergias, Paciente paciente) {
+        this.id = id;
+        this.fechacreacion = fechacreacion;
+        this.alergias = alergias;
+        this.paciente = paciente;
     }
 
     public Integer getId() {
@@ -96,15 +95,6 @@ public class Historial implements Serializable {
 
     public void setAlergias(String alergias) {
         this.alergias = alergias;
-    }
-
-    @XmlTransient
-    public Collection<Historia> getHistoriaCollection() {
-        return historiaCollection;
-    }
-
-    public void setHistoriaCollection(Collection<Historia> historiaCollection) {
-        this.historiaCollection = historiaCollection;
     }
 
     public Paciente getPaciente() {

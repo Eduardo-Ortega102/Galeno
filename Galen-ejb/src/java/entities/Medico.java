@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 import java.io.Serializable;
@@ -21,10 +16,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Mictlan
- */
 @Entity
 @Table(name = "MEDICO")
 @XmlRootElement
@@ -104,17 +95,6 @@ public class Medico implements Serializable, User {
 
     public Medico(String colegiado) {
         this.colegiado = colegiado;
-    }
-
-    public Medico(String colegiado, String nombre, String apellido, String dni, int telefono, String email, String password, String localizacion) {
-        this.colegiado = colegiado;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.telefono = telefono;
-        this.email = email;
-        this.password = password;
-        this.localizacion = localizacion;
     }
 
     public Medico(String colegiado, String nombre, String apellido, String dni, int telefono, String email, String password, String localizacion, String especialidad, int minutosconsulta) {

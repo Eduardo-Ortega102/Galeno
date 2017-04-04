@@ -1,5 +1,6 @@
 package controller;
 
+import static controller.FacadeFactory.historialFacade;
 import entities.Historial;
 import entities.Medico;
 import entities.Paciente;
@@ -20,15 +21,13 @@ public class EntityFactory {
     public static Paciente paciente(HttpServletRequest request) {
         String ssocial = request.getParameter("nseguridad");
         String fechaNacimiento = (String) request.getParameter("nacimientoUsuario");
-        return new Paciente(dni(request), nombre(request), apellidos(request), ssocial, telefono(request), email(request), password(request), fechaNacimiento);
+        return new Paciente(dni(request), nombre(request), apellidos(request), fechaNacimiento, ssocial, telefono(request), email(request), password(request));
     }
 
-    //Corregir esto. Paciente es el problema
-    public static Historial historial(HttpServletRequest request) {
-        int idHistorial = 3;
+    public static Historial historial(HttpServletRequest request, Paciente paciente) {
         String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         String notas = request.getParameter("alergiasPaciente");
-        return new Historial(idHistorial, fecha, paciente(request),notas);
+        return new Historial(historialFacade().count(), fecha, notas, paciente);
     }
 
     private static String dni(HttpServletRequest request) {

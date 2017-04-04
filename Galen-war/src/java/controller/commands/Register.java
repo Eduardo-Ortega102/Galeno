@@ -4,14 +4,13 @@ package controller.commands;
 import beans.HistorialFacade;
 import beans.MedicoFacade;
 import beans.PacienteFacade;
-import entities.Medico;
+import static controller.EntityFactory.historial;
 import entities.Paciente;
 import static controller.EntityFactory.medico;
 import static controller.EntityFactory.paciente;
-import static controller.EntityFactory.historial;
+import static controller.FacadeFactory.historialFacade;
 import static controller.FacadeFactory.medicoFacade;
 import static controller.FacadeFactory.pacienteFacade;
-import static controller.FacadeFactory.historialFacade;
 
 public class Register extends FrontCommand{
 
@@ -33,33 +32,25 @@ public class Register extends FrontCommand{
     }
 
     private void crearPaciente() {
-        PacienteFacade facade = pacienteFacade();
-        //HistorialFacade facadeHistory = historialFacade();
-        if (existPatient(facade)) errorRegistro();
-        facade.create(paciente(request));
-        //facadeHistory.create(historial(request));
+        if (existPatient()) errorRegistro();
+        //final Paciente paciente = paciente(request);
+        pacienteFacade().create(paciente(request));
+        HistorialFacade facadeHistory = historialFacade();
+        facadeHistory.create(historial(request, paciente(request)));
     }
 
     private void crearMedico() {
         MedicoFacade facade = medicoFacade();
-        if (existDoctor(facade)) errorRegistro();
+        if (existDoctor()) errorRegistro();
         facade.create(medico(request));
     }
     
 
-    private boolean existPatient(PacienteFacade miPaciente) {
-        for (Paciente paciente : miPaciente.findAll())
-            if (paciente.getDni().equals(request.getParameter("dniUsuario"))) {
-                return true;
-            }
-        return false;
+    private boolean existPatient() {
+        return pacienteFacade().find(request.getParameter("dniUsuario")) != null;
     }
 
-    private boolean existDoctor(MedicoFacade miMedico) {
-        for (Medico medico : miMedico.findAll())
-            if (medico.getColegiado().equals(request.getParameter("ncolegiadoMedico"))) {
-                return true;
-            }
-        return false;
+    private boolean existDoctor() {
+        return medicoFacade().find(request.getParameter("ncolegiadoMedico")) != null;
     }
 }

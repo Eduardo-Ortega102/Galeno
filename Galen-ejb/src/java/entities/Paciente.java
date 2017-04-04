@@ -1,7 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,36 +13,33 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author usuario
+ */
 @Entity
 @Table(name = "PACIENTE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p")
-    , @NamedQuery(name = "Paciente.findByDni", query = "SELECT p FROM Paciente p WHERE p.dni = :dni")
-    , @NamedQuery(name = "Paciente.findByNombre", query = "SELECT p FROM Paciente p WHERE p.nombre = :nombre")
-    , @NamedQuery(name = "Paciente.findByApellido", query = "SELECT p FROM Paciente p WHERE p.apellido = :apellido")
-    , @NamedQuery(name = "Paciente.findBySsocial", query = "SELECT p FROM Paciente p WHERE p.ssocial = :ssocial")
-    , @NamedQuery(name = "Paciente.findByTelefono", query = "SELECT p FROM Paciente p WHERE p.telefono = :telefono")
-    , @NamedQuery(name = "Paciente.findByEmail", query = "SELECT p FROM Paciente p WHERE p.email = :email")
-    , @NamedQuery(name = "Paciente.findByPassword", query = "SELECT p FROM Paciente p WHERE p.password = :password")})
+    @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p"),
+    @NamedQuery(name = "Paciente.findByDni", query = "SELECT p FROM Paciente p WHERE p.dni = :dni"),
+    @NamedQuery(name = "Paciente.findByNombre", query = "SELECT p FROM Paciente p WHERE p.nombre = :nombre"),
+    @NamedQuery(name = "Paciente.findByApellido", query = "SELECT p FROM Paciente p WHERE p.apellido = :apellido"),
+    @NamedQuery(name = "Paciente.findByNacimiento", query = "SELECT p FROM Paciente p WHERE p.nacimiento = :nacimiento"),
+    @NamedQuery(name = "Paciente.findBySsocial", query = "SELECT p FROM Paciente p WHERE p.ssocial = :ssocial"),
+    @NamedQuery(name = "Paciente.findByTelefono", query = "SELECT p FROM Paciente p WHERE p.telefono = :telefono"),
+    @NamedQuery(name = "Paciente.findByEmail", query = "SELECT p FROM Paciente p WHERE p.email = :email"),
+    @NamedQuery(name = "Paciente.findByPassword", query = "SELECT p FROM Paciente p WHERE p.password = :password")})
 public class Paciente implements Serializable, User {
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "NACIMIENTO")
-    private String nacimiento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
-    private Collection<Cita> citaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
-    private Collection<Historial> historialCollection;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "paciente")
+    private Historial historial;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,6 +61,11 @@ public class Paciente implements Serializable, User {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "NACIMIENTO")
+    private String nacimiento;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 13)
     @Column(name = "SSOCIAL")
     private String ssocial;
     @Basic(optional = false)
@@ -85,15 +91,15 @@ public class Paciente implements Serializable, User {
         this.dni = dni;
     }
 
-    public Paciente(String dni, String nombre, String apellido, String ssocial, int telefono, String email, String password, String nacimiento) {
+    public Paciente(String dni, String nombre, String apellido, String nacimiento, String ssocial, int telefono, String email, String password) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.nacimiento = nacimiento;
         this.ssocial = ssocial;
         this.telefono = telefono;
         this.email = email;
         this.password = password;
-        this.nacimiento = nacimiento;
     }
 
     public String getDni() {
@@ -118,6 +124,14 @@ public class Paciente implements Serializable, User {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getNacimiento() {
+        return nacimiento;
+    }
+
+    public void setNacimiento(String nacimiento) {
+        this.nacimiento = nacimiento;
     }
 
     public String getSsocial() {
@@ -177,30 +191,12 @@ public class Paciente implements Serializable, User {
         return "entities.Paciente[ dni=" + dni + " ]";
     }
 
-    public String getNacimiento() {
-        return nacimiento;
+    public Historial getHistorial() {
+        return historial;
     }
 
-    public void setNacimiento(String nacimiento) {
-        this.nacimiento = nacimiento;
-    }
-
-    @XmlTransient
-    public Collection<Cita> getCitaCollection() {
-        return citaCollection;
-    }
-
-    public void setCitaCollection(Collection<Cita> citaCollection) {
-        this.citaCollection = citaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Historial> getHistorialCollection() {
-        return historialCollection;
-    }
-
-    public void setHistorialCollection(Collection<Historial> historialCollection) {
-        this.historialCollection = historialCollection;
+    public void setHistorial(Historial historial) {
+        this.historial = historial;
     }
     
 }
