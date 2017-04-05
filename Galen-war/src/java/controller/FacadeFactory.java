@@ -6,57 +6,41 @@ import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-public class FacadeFactory {
+public final class FacadeFactory {
 
-    private static PacienteFacade pacienteFacade;
-    private static MedicoFacade medicoFacade;
-    private static CitaFacade citaFacade;
-    private static HistoriaFacade historiaFacade;
-    private static HistorialFacade historialFacade;
-    private static HorarioFacade horarioFacade;
+    private FacadeFactory() {
+    }
 
-    private static AbstractFacade abstractFacade(String facade) {
+    public static PacienteFacade pacienteFacade() {
+        return create(PacienteFacade.class);
+    }
+
+    public static MedicoFacade medicoFacade() {
+        return create(MedicoFacade.class);
+    }
+
+    public static CitaFacade citaFacade() {
+        return create(CitaFacade.class);
+    }
+
+    public static HistoriaFacade historiaFacade() {
+        return create(HistoriaFacade.class);
+    }
+
+    public static HistorialFacade historialFacade() {
+        return create(HistorialFacade.class);
+    }
+
+    public static HorarioFacade horarioFacade() {
+        return create(HorarioFacade.class);
+    }
+ 
+    private static <T extends AbstractFacade> T create(Class<T> facade) {
         try {
-            return InitialContext.doLookup("java:global/Galen/Galen-ejb/" + facade);
+            return InitialContext.doLookup("java:global/Galen/Galen-ejb/" + facade.getSimpleName());
         } catch (NamingException ex) {
             Logger.getLogger(FacadeFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
-    
-    public static PacienteFacade pacienteFacade() {
-        if (pacienteFacade == null) 
-            pacienteFacade = (PacienteFacade) abstractFacade("PacienteFacade");
-        return pacienteFacade;
-    }
-
-    public static MedicoFacade medicoFacade() {
-        if (medicoFacade == null) 
-            medicoFacade = (MedicoFacade) abstractFacade("MedicoFacade");
-        return medicoFacade;
-    }
-
-    public static CitaFacade citaFacade() {
-        if (citaFacade == null)
-            citaFacade = (CitaFacade) abstractFacade("CitaFacade");
-        return citaFacade;
-    }
-
-    public static HistoriaFacade historiaFacade() {
-        if (historiaFacade == null)
-            historiaFacade = (HistoriaFacade) abstractFacade("HistoriaFacade");
-        return historiaFacade;
-    }
-
-    public static HistorialFacade historialFacade() {
-        if (historialFacade == null)
-            historialFacade = (HistorialFacade) abstractFacade("HistorialFacade");
-        return historialFacade;
-    }
-
-    public static HorarioFacade horarioFacade() {
-        if (horarioFacade == null)
-            horarioFacade = (HorarioFacade) abstractFacade("HorarioFacade");
-        return horarioFacade;
     }
 }

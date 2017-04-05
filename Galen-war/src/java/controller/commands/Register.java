@@ -2,49 +2,41 @@
 package controller.commands;
 
 import beans.HistorialFacade;
-import beans.MedicoFacade;
-import beans.PacienteFacade;
 import static controller.EntityFactory.historial;
-import entities.Paciente;
 import static controller.EntityFactory.medico;
 import static controller.EntityFactory.paciente;
-import static controller.FacadeFactory.historialFacade;
-import static controller.FacadeFactory.medicoFacade;
 import static controller.FacadeFactory.pacienteFacade;
+import static controller.FacadeFactory.medicoFacade;
+import static controller.FacadeFactory.historialFacade;
 
 public class Register extends FrontCommand{
 
-    private void errorRegistro() {
-        forward("/register.jsp?error=1");
-    }
-        
+    private boolean success;
+
     @Override
     public void process() {
-        if (request.getParameter("Roles").equals("Paciente")) {
-            crearPaciente();
-        } else if (request.getParameter("Roles").equals("Medico")) {
-            crearMedico();
-        } else {
-            errorRegistro();
-            return;
-        }
-        forward("/index.jsp?successfulRegister=true");
+        success = false;
+        if (request.getParameter("Roles").equals("Paciente")) success = crearPaciente();
+        else if (request.getParameter("Roles").equals("Medico")) success = crearMedico();
+        if (success) 
+            forward("/index.jsp?successfulRegister=true");
+        else
+            forward("/register.jsp?error=1");
     }
 
-    private void crearPaciente() {
-        if (existPatient()) errorRegistro();
-        //final Paciente paciente = paciente(request);
+    private boolean crearPaciente() {
+        if (existPatient()) return false;
         pacienteFacade().create(paciente(request));
-        HistorialFacade facadeHistory = historialFacade();
-        facadeHistory.create(historial(request, paciente(request)));
+        final HistorialFacade facade = historialFacade();
+        facade.create(historial(request, facade.count()));
+        return true;
     }
 
-    private void crearMedico() {
-        MedicoFacade facade = medicoFacade();
-        if (existDoctor()) errorRegistro();
-        facade.create(medico(request));
+    private boolean crearMedico() {
+        if (existDoctor()) return false;
+        medicoFacade().create(medico(request));
+        return true;
     }
-    
 
     private boolean existPatient() {
         return pacienteFacade().find(request.getParameter("dniUsuario")) != null;

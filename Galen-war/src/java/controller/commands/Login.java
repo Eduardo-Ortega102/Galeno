@@ -2,7 +2,8 @@ package controller.commands;
 
 import entities.User;
 import javax.servlet.http.HttpSession;
-import static controller.FacadeFactory.*;
+import static controller.FacadeFactory.pacienteFacade;
+import static controller.FacadeFactory.medicoFacade;
 
 public class Login extends FrontCommand {
 

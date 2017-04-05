@@ -2,11 +2,11 @@ package controller.commands;
 
 import static controller.EntityFactory.medico;
 import static controller.EntityFactory.paciente;
-import static controller.FacadeFactory.medicoFacade;
-import static controller.FacadeFactory.pacienteFacade;
 import entities.Medico;
 import entities.Paciente;
 import entities.User;
+import static controller.FacadeFactory.pacienteFacade;
+import static controller.FacadeFactory.medicoFacade;
 
 public class EditProfile extends FrontCommand {
 

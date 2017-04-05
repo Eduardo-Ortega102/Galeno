@@ -120,50 +120,62 @@ public class Medico implements Serializable, User {
         this.colegiado = colegiado;
     }
 
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    @Override
     public String getApellido() {
         return apellido;
     }
 
+    @Override
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
+    @Override
     public String getDni() {
         return dni;
     }
 
+    @Override
     public void setDni(String dni) {
         this.dni = dni;
     }
 
+    @Override
     public int getTelefono() {
         return telefono;
     }
 
+    @Override
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
+    @Override
     public String getEmail() {
         return email;
     }
 
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
 
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }
@@ -186,14 +198,9 @@ public class Medico implements Serializable, User {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Medico)) {
-            return false;
-        }
+        if (!(object instanceof Medico)) return false;
         Medico other = (Medico) object;
-        if ((this.colegiado == null && other.colegiado != null) || (this.colegiado != null && !this.colegiado.equals(other.colegiado))) {
-            return false;
-        }
-        return true;
+        return !((this.colegiado == null && other.colegiado != null) || (this.colegiado != null && !this.colegiado.equals(other.colegiado)));
     }
 
     @Override
@@ -227,10 +234,12 @@ public class Medico implements Serializable, User {
     }
 
     @XmlTransient
+    @Override
     public Collection<Cita> getCitaCollection() {
         return citaCollection;
     }
 
+    @Override
     public void setCitaCollection(Collection<Cita> citaCollection) {
         this.citaCollection = citaCollection;
     }

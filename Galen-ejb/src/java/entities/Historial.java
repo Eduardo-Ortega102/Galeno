@@ -1,28 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author usuario
- */
 @Entity
 @Table(name = "HISTORIAL")
 @XmlRootElement
@@ -32,6 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Historial.findByFechacreacion", query = "SELECT h FROM Historial h WHERE h.fechacreacion = :fechacreacion"),
     @NamedQuery(name = "Historial.findByAlergias", query = "SELECT h FROM Historial h WHERE h.alergias = :alergias")})
 public class Historial implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "historial")
+    private Collection<Historia> historiaCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -59,13 +57,7 @@ public class Historial implements Serializable {
     public Historial(Integer id) {
         this.id = id;
     }
-/*
-    public Historial(Integer id, String fechacreacion, String alergias) {
-        this.id = id;
-        this.fechacreacion = fechacreacion;
-        this.alergias = alergias;
-    }
-*/
+
     public Historial(Integer id, String fechacreacion, String alergias, Paciente paciente) {
         this.id = id;
         this.fechacreacion = fechacreacion;
@@ -115,19 +107,23 @@ public class Historial implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Historial)) {
-            return false;
-        }
+        if (!(object instanceof Historial)) return false;
         Historial other = (Historial) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
         return "entities.Historial[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Historia> getHistoriaCollection() {
+        return historiaCollection;
+    }
+
+    public void setHistoriaCollection(Collection<Historia> historiaCollection) {
+        this.historiaCollection = historiaCollection;
     }
     
 }

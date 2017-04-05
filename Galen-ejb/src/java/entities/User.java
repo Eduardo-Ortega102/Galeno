@@ -1,6 +1,6 @@
-
 package entities;
 
+import java.util.Collection;
 
 public interface User {
 
@@ -27,4 +27,8 @@ public interface User {
     public String getPassword();
 
     public void setPassword(String password);
+
+    public Collection<Cita> getCitaCollection();
+
+    public void setCitaCollection(Collection<Cita> citaCollection);
 }

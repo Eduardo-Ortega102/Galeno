@@ -10,11 +10,17 @@
                     + "<input readonly type=\"text\" name=\"ncolegiadoMedico\" id=\"colegiado\" value=\"" + medico.getColegiado() + "\"/>"
                     + "<label for=\"localizacionMedico\">Localizacion</label> "
                     + "<input type=\"text\" name=\"localizacionMedico\" id=\"localizacion\" value=\"" + medico.getLocalizacion() + "\"/>"
+                    + "<label for=\"especialidadMedico\">Especialidad</label> "
+                    + "<input type=\"text\" name=\"especialidadMedico\" id=\"especialidadMedico\" value=\"" + medico.getEspecialidad() + "\"/>"
+                    + "<label for=\"minutosConsulta\">Minutos por consulta</label> "
+                    + "<input type=\"text\" name=\"minutosConsulta\" id=\"minutosConsulta\" value=\"" + medico.getMinutosconsulta()+ "\"/>"
                     + "<br/>";
         }
         Paciente paciente = (Paciente) user;
         return "<label for=\"nseguridad\">Numero Seguridad Social</label> "
                 + "<input type=\"text\" name=\"nseguridad\" id=\"ssocial\" value=\"" + paciente.getSsocial() + "\"/>"
+                + "<label for=\"nacimientoUsuario\">Fecha de nacimiento</label> "
+                + "<input type=\"text\" name=\"nacimientoUsuario\" id=\"nacimientoUsuario\" value=\"" + paciente.getNacimiento() + "\"/>"
                 + "<br/>";
     }
 

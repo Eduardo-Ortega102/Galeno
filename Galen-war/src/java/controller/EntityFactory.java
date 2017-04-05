@@ -1,6 +1,5 @@
 package controller;
 
-import static controller.FacadeFactory.historialFacade;
 import entities.Historial;
 import entities.Medico;
 import entities.Paciente;
@@ -8,7 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
-public class EntityFactory {
+public final class EntityFactory {
+
+    private EntityFactory() {
+    }
 
     public static Medico medico(HttpServletRequest request) {
         String colegiado = request.getParameter("ncolegiadoMedico");
@@ -24,10 +26,10 @@ public class EntityFactory {
         return new Paciente(dni(request), nombre(request), apellidos(request), fechaNacimiento, ssocial, telefono(request), email(request), password(request));
     }
 
-    public static Historial historial(HttpServletRequest request, Paciente paciente) {
+    public static Historial historial(HttpServletRequest request, int historialId) {
         String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         String notas = request.getParameter("alergiasPaciente");
-        return new Historial(historialFacade().count(), fecha, notas, paciente);
+        return new Historial(historialId, fecha, notas, paciente(request));
     }
 
     private static String dni(HttpServletRequest request) {
@@ -43,7 +45,7 @@ public class EntityFactory {
     }
 
     private static int telefono(HttpServletRequest request) throws NumberFormatException {
-        return Integer.parseInt(request.getParameter("telefonoUsuario"));
+        return Integer.parseInt(request.getParameter("telefonoUsuario").trim());
     }
 
     private static String email(HttpServletRequest request) {

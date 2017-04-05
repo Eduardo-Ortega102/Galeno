@@ -21,9 +21,4 @@ public class HistorialFacade extends AbstractFacade<Historial> {
         super(Historial.class);
     }
     
-    public Historial findByPatient(String dni){
-        return  em.createNamedQuery("Historial.findByPaciente", Historial.class)
-                .setParameter("paciente", new Paciente(dni))
-                .getSingleResult();
-    }
 }

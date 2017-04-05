@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,16 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author usuario
- */
 @Entity
 @Table(name = "PACIENTE")
 @XmlRootElement
@@ -37,6 +31,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Paciente.findByEmail", query = "SELECT p FROM Paciente p WHERE p.email = :email"),
     @NamedQuery(name = "Paciente.findByPassword", query = "SELECT p FROM Paciente p WHERE p.password = :password")})
 public class Paciente implements Serializable, User {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
+    private Collection<Historial> historialCollection;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
+    private Collection<Cita> citaCollection;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "paciente")
     private Historial historial;
@@ -102,26 +102,32 @@ public class Paciente implements Serializable, User {
         this.password = password;
     }
 
+    @Override
     public String getDni() {
         return dni;
     }
 
+    @Override
     public void setDni(String dni) {
         this.dni = dni;
     }
 
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    @Override
     public String getApellido() {
         return apellido;
     }
 
+    @Override
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
@@ -142,26 +148,32 @@ public class Paciente implements Serializable, User {
         this.ssocial = ssocial;
     }
 
+    @Override
     public int getTelefono() {
         return telefono;
     }
 
+    @Override
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
+    @Override
     public String getEmail() {
         return email;
     }
 
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
 
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }
@@ -176,14 +188,9 @@ public class Paciente implements Serializable, User {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Paciente)) {
-            return false;
-        }
+        if (!(object instanceof Paciente)) return false;
         Paciente other = (Paciente) object;
-        if ((this.dni == null && other.dni != null) || (this.dni != null && !this.dni.equals(other.dni))) {
-            return false;
-        }
-        return true;
+        return !((this.dni == null && other.dni != null) || (this.dni != null && !this.dni.equals(other.dni)));
     }
 
     @Override
@@ -197,6 +204,26 @@ public class Paciente implements Serializable, User {
 
     public void setHistorial(Historial historial) {
         this.historial = historial;
+    }
+
+    @XmlTransient
+    @Override
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
+    }
+
+    @Override
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
+    }
+
+    @XmlTransient
+    public Collection<Historial> getHistorialCollection() {
+        return historialCollection;
+    }
+
+    public void setHistorialCollection(Collection<Historial> historialCollection) {
+        this.historialCollection = historialCollection;
     }
     
 }
