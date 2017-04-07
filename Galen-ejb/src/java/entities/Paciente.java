@@ -33,9 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Paciente implements Serializable, User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
-    private Collection<Historial> historialCollection;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
     private Collection<Cita> citaCollection;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "paciente")
@@ -215,15 +212,6 @@ public class Paciente implements Serializable, User {
     @Override
     public void setCitaCollection(Collection<Cita> citaCollection) {
         this.citaCollection = citaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Historial> getHistorialCollection() {
-        return historialCollection;
-    }
-
-    public void setHistorialCollection(Collection<Historial> historialCollection) {
-        this.historialCollection = historialCollection;
     }
     
 }

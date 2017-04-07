@@ -1,7 +1,6 @@
 
 package controller.commands;
 
-import beans.HistorialFacade;
 import static controller.EntityFactory.historial;
 import static controller.EntityFactory.medico;
 import static controller.EntityFactory.paciente;
@@ -27,8 +26,7 @@ public class Register extends FrontCommand{
     private boolean crearPaciente() {
         if (existPatient()) return false;
         pacienteFacade().create(paciente(request));
-        final HistorialFacade facade = historialFacade();
-        facade.create(historial(request, facade.count()));
+        historialFacade().create(historial(request, historialFacade().count()));
         return true;
     }
 
