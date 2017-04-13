@@ -238,7 +238,7 @@ public class Medico implements Serializable, User {
     public Collection<Cita> getCitaCollection() {
         return citaCollection;
     }
-
+        
     @Override
     public void setCitaCollection(Collection<Cita> citaCollection) {
         this.citaCollection = citaCollection;
@@ -252,5 +252,4 @@ public class Medico implements Serializable, User {
     public void setHistoriaCollection(Collection<Historia> historiaCollection) {
         this.historiaCollection = historiaCollection;
     }
-
 }
