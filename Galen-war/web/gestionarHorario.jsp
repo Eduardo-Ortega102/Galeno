@@ -4,7 +4,7 @@
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="estilos.css">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
