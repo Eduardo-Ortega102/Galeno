@@ -4,8 +4,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Página de registro</title>
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="stripebg">
         <h1>Si desea registrarse en nuestra aplicación de Galeno, introduzca a continuación los siguientes datos:</h1>
 
         <%
@@ -15,36 +17,36 @@
                 out.println("</div>");
             }
         %>
-        <form class="navbar-form navbar-right" action="FrontController" method="POST" autocomplete="on"> 
+        <form class="form" action="FrontController" method="POST" autocomplete="on"> 
             <input type="hidden" name="command" value="Register" />
-            <p> 
+            <div class="form-group">
                 <label>Tu nombre: </label>
                 <input id="nombreUsuario" name="nombreUsuario" required="required" type="text" placeholder="Nombre" />
-            </p>
-            <p> 
+            </div>
+            <div class="form-group">
                 <label>Tus apellidos: </label>
                 <input id="apellidosUsuario" name="apellidosUsuario" required="required" type="text" placeholder="Apellidos" />
-            </p>
-            <p> 
+            </div>
+            <div class="form-group">
                 <label> Tu correo electrónico: </label>
                 <input id="emailUsuario" name="emailUsuario" required="required" type="email" placeholder="miemail@mail.com"/> 
-            </p>
-            <p> 
+            </div>
+            <div class="form-group">
                 <label>Contraseña: </label>
                 <input id="passwordUsuario" name="passwordUsuario" required="required" type="password" placeholder="eg. X8df!90EO"/>
-            </p>
-            <p> 
+            </div>
+            <div class="form-group">
                 <label>DNI: </label>
                 <input id="dniUsuario" name="dniUsuario" required="required" type="text" placeholder="11111111 X"/>
-            </p>
-            <p> 
+            </div>
+            <div class="form-group">
                 <label>Telefono: </label>
                 <input id="telefonoUsuario" name="telefonoUsuario" required="required" type="number" placeholder="123456789"/>
-            </p>
-            <p> 
+            </div>
+            <div class="form-group"> 
                 <input type="radio" name="Roles" value="Paciente" onclick="mostrar(this.value)" /><label> Paciente </label>
                 <input type="radio" name="Roles" value="Medico" onclick="mostrar(this.value)" /><label> Médico </label>
-            </p>
+            </div>
 
             <div id="datosPaciente" style='display:none'>
                 <h4>Introduzca sus datos como paciente</h4>
@@ -82,10 +84,8 @@
                 </p>
             </div>
 
-            <p class="BotonDeRegistro"> 
-                <input type="submit" value="Registrarse"/> 
-                <input class="button" type="button" onclick="confirmarCancelacion()" value="Cancelar registro" />
-            </p>
+                <button type="submit" class="btn btn-primary">Registrarse</button> 
+                <button class="btn btn-primary" type="button" onclick="confirmarCancelacion()">Cancelar registro</button>
         </form>
 
 
@@ -121,5 +121,7 @@
                 eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=150,height=100');");
             }
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>

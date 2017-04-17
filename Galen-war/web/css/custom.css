@@ -13,3 +13,7 @@
         margin-top: 125px;
 	text-align: center;
 }
+.stripebg {
+        background: url('http://www.stripegenerator.com/generators/generate_stripes.php?fore=f8f8f8&h=30&w=20&p=20&back1=fcfcfcfdfd&back2=dddddd&gt=0&d=0&shadow=0') repeat;
+        background-attachment: fixed;
+}
