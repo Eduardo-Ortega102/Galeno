@@ -17,3 +17,14 @@
         background: url('http://www.stripegenerator.com/generators/generate_stripes.php?fore=f8f8f8&h=30&w=20&p=20&back1=fcfcfcfdfd&back2=dddddd&gt=0&d=0&shadow=0') repeat;
         background-attachment: fixed;
 }
+
+.panel-default > .panel-heading-custom {
+        background: #26a888;
+}
+.panel-default > .panel-body-custom {
+        background: #26a888;
+}
+.panel-default > .panel-footer-custom {
+        background: #26a888;
+        text-align: right;
+}
