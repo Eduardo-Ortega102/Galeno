@@ -23,13 +23,9 @@
                 <td><a href="">Modificar</a></td>
                 <td>
                     <form action="FrontController" method="post">
-                        <input type="hidden" command="mostrarHistorial" value="<%=cita.getPaciente().getHistorial().getId()%>"> 
+                        <input type="hidden" name="mostrarHistorial" value="<%=cita.getPaciente().getHistorial().getId()%>"> 
                     </form>
                 </td>
-                <td><a href="">Cancelar</a></td>
-            </tr>
-            <tr>
-                <td><%=//i%></td>
             </tr>
         </table>
         <%}%>
