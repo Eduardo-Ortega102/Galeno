@@ -5,16 +5,9 @@
         <title>Panel Medico</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <jsp:include page="/WEB-INF/headerRef.html"/>
     </head>
-    <body>
-        
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-        <link href="vendor/sb-admin/css/sb-admin-2.css" rel="stylesheet">
-        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-        <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-        
+    <body>    
         <div id="wrapper">
             <jsp:include page="/WEB-INF/header.jsp"/>
                 <div id="page-wrapper">
@@ -97,20 +90,6 @@
 
                 </div>
         </div>
-                
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="vendor/metisMenu/metisMenu.min.js"></script>
-        <script src="distweb/js/sb-admin-2.js"></script>
-        <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-        <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-        <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
-        <script>
-        $(document).ready(function() {
-            $('#dataTables-example').DataTable({
-                responsive: true
-            });
-        });
-        </script>
+        <jsp:include page="/WEB-INF/footerRef.html"/>        
     </body>
 </html>

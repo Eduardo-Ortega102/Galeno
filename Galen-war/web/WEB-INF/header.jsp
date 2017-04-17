@@ -53,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color:black" href="index.html"><%=getName(request.getSession())%></a>
+                <a class="navbar-brand" style="color:black" href="indexMedico.jsp"><%=getName(request.getSession())%></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -97,7 +97,7 @@
                                     <a class="active" href="blank.html">Agenda</a>
                                 </li>
                                 <li>
-                                    <a href="crearAgenda.html">Gestionar</a>
+                                    <a href="GestionarAgenda.jsp">Gestionar</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

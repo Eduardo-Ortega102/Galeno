@@ -3,10 +3,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Perfil</title>
+        <title>Panel Paciente</title>
+        <jsp:include page="/WEB-INF/headerRef.html"/>
     </head>
     <body>
-        <jsp:include page="/WEB-INF/header.jsp"/>
-        <h1>este es el perfil de <%= request.getParameter("email") %></h1>
+        <div id="wrapper">
+            <jsp:include page="/WEB-INF/header.jsp"/>
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                           <div class="col-lg-12">
+                               <h1 class="page-header">Nope</h1>
+                           </div>
+                   </div>
+                </div>
+            </div>
+	</div>
+        <jsp:include page="/WEB-INF/footerRef.html"/>
     </body>
 </html>
