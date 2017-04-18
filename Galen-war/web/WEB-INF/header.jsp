@@ -26,7 +26,7 @@
                 + "<li><a href=\"misRecetas.jsp\">Recetas</a></li>"
                 + "<li>" + searchDoctor() + "</li>"
                 : 
-                "<li><a href=\"gestionarAgenda.jsp\">Gestionar Agenda</a></li>"
+                "<li><a href=\"FrontController?command=citasMedico\">Gestionar Agenda</a></li>"
                 + "<li><a href=\"gestionarHorario.jsp\">Planificaci&oacute;n</a></li>";
     }
 

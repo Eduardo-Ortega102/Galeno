@@ -11,8 +11,8 @@ public class citasMedico extends FrontCommand {
     @Override
     public void process() {
         Medico medico = (Medico) request.getSession().getAttribute("user");
-        String día=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        ArrayList<Cita> citasDelDia=citasDelDia(medico, día);
+        String fecha=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        ArrayList<Cita> citasDelDia=citasDelDia(medico, fecha);
         request.getSession().setAttribute("agenda", citasDelDia);
         forward("/gestionarAgenda.jsp");
     }
