@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cita.findById", query = "SELECT c FROM Cita c WHERE c.id = :id")
     , @NamedQuery(name = "Cita.findByFecha", query = "SELECT c FROM Cita c WHERE c.fecha = :fecha")
     , @NamedQuery(name = "Cita.findByHora", query = "SELECT c FROM Cita c WHERE c.hora = :hora")})
-public class Cita implements Serializable {
+public class Cita implements Serializable, Comparable<Cita> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -124,5 +124,9 @@ public class Cita implements Serializable {
     public String toString() {
         return "entities.Cita[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public int compareTo(Cita cita) {
+        return this.hora.compareTo(cita.getHora());
+    }
 }

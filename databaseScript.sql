@@ -11,7 +11,9 @@ CREATE TABLE "PACIENTE" (
 );
 INSERT INTO "PACIENTE" VALUES 
 ('42367894P', 'Eduardo', 'Ortega Naranjo','1993-10-13','786589451235T', 635987412, 'hola@gmail.com', '1234'),
-('45652178Q', 'Timon', 'Berkowitz','1994-11-08','786580000035T', 985632147, 'timon@gmail.com', '1234')
+('45652178Q', 'Timon', 'Berkowitz','1994-11-08','786580000035T', 985632147, 'timon@gmail.com', '1234'),
+('12378945R', 'Pepito', 'Grillo','1978-12-29','123456789101A', 928251040, 'pepi@gmail.com', '1234'),
+('12378945R', 'Heidy', 'Honda','1986-04-15','456123147852Z', 801123789, 'heidy@gmail.com', '1234')
 ;
 
 
@@ -46,7 +48,10 @@ CREATE TABLE "HISTORIAL" (
 );
 INSERT INTO "HISTORIAL" VALUES 
 (0, '2017-04-03', '45652178Q', 'no conocidas'),
-(1, '2017-04-03', '42367894P', 'polem')
+(1, '2017-04-03', '42367894P', 'polem'),
+(2, '2017-04-03', '45652178Q', 'Albinismo'),
+(3, '2017-04-03', '45652178Q', 'Miopatia congénita'),
+(4, '2017-04-03', '45652178Q', 'Cáncer Anaplásico de Tiroides')
 ;
 
 

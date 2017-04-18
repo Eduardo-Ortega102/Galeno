@@ -5,7 +5,8 @@ import entities.Medico;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
+import java.util.List;
 
 public class citasMedico extends FrontCommand {
 
@@ -13,23 +14,17 @@ public class citasMedico extends FrontCommand {
     public void process() {
         Medico medico = (Medico) request.getSession().getAttribute("user");
         String fecha=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        ArrayList<Cita> citasDelDia=citasDelDia(medico, fecha);
+        List<Cita> citasDelDia=citasDelDia(medico, fecha);
         request.getSession().setAttribute("agenda", citasDelDia);
         forward("/gestionarAgenda.jsp");
     }
     
-    private ArrayList<Cita> citasDelDia(Medico medico, String fecha) {
-        ArrayList<Cita> citasMedico=new ArrayList<>();
+    private List<Cita> citasDelDia(Medico medico, String fecha) {
+        List<Cita> citasMedico=new ArrayList<>();
         for (Cita cita : medico.getCitaCollection()) {
             if (cita.getFecha().equals(fecha))citasMedico.add(cita);
         }
-        citasMedico.sort(new Comparator<Cita>() {
-            @Override
-            public int compare(Cita cita1, Cita cita2) {
-                return cita1.getHora().compareTo(cita2)
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
+        Collections.sort(citasMedico);
         return citasMedico;
     }
 }

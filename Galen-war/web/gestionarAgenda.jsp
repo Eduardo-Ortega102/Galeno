@@ -15,7 +15,7 @@
         <jsp:include page="/WEB-INF/header.jsp"/>
         <%if(((ArrayList<Cita>)request.getSession().getAttribute("agenda")).size()>0) {%>
             <table>
-                <tr><th>Id</th><th>Paciente</th><th>Hora</th></tr>
+                <tr><th hidden="">Id</th><th>Paciente</th><th>Hora</th></tr>
                 <%for(Cita cita : (ArrayList<Cita>) request.getSession().getAttribute("agenda")){%>
                 <tr>
                     <td hidden=""><%=cita.getId()%></td>
@@ -25,7 +25,7 @@
                         <form action="FrontController" method="post">
                             <input type="hidden" name="command" value="MostrarHistorial" />
                             <input type="hidden" name="historial" value="<%=cita.getPaciente().getHistorial().getId()%>"> 
-                            <button type=\"submit\">Ver Historial</button>
+                            <button type="submit">Ver Historial</button>
                         </form>
                     </td>
                 </tr>
