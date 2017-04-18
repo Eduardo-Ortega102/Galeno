@@ -14,9 +14,9 @@
     
         <jsp:include page="/WEB-INF/header.jsp"/>
         <%if(((ArrayList<Cita>)request.getSession().getAttribute("agenda")).size()>0) {%>
-            <%for(Cita cita : (ArrayList<Cita>) request.getSession().getAttribute("agenda")){%>
             <table>
                 <tr><th>Id</th><th>Paciente</th><th>Hora</th></tr>
+                <%for(Cita cita : (ArrayList<Cita>) request.getSession().getAttribute("agenda")){%>
                 <tr>
                     <td hidden=""><%=cita.getId()%></td>
                     <td><%=cita.getPaciente().getNombre()+" " +cita.getPaciente().getApellido()%></td>
@@ -29,8 +29,8 @@
                         </form>
                     </td>
                 </tr>
+            <%}%>
             </table>
-            <%}
-        } else {%> <h1>No tiene citas hoy</h1><%}%>
+        <%} else {%> <h1>No tiene citas hoy</h1><%}%>
     </body>
 </html>
