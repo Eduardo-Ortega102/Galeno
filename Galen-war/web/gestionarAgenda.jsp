@@ -23,8 +23,8 @@
                     <td><%=cita.getHora()%></td>
                     <td>
                         <form action="FrontController" method="post">
-                            <input type="hidden" name="command" value="MostrarHistorial" />
-                            <input type="hidden" name="historial" value="<%=cita.getPaciente().getHistorial().getId()%>"> 
+                            <input type="hidden" name="command" value="ShowHistory" />
+                            <input type="hidden" name="historyId" value="<%=cita.getPaciente().getHistorial().getId()%>"> 
                             <button type="submit">Ver Historial</button>
                         </form>
                     </td>
