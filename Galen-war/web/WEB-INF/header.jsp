@@ -114,10 +114,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Historial<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="historialClinico.jsp">A</a>
+                                    <a href="verHorario.jsp">Ver mi horario</a>
                                 </li>
                                 <li>
-                                    <a href="historialClinico.jsp">B</a>
+                                    <a href="gestionarHorario.jsp">Editar mi horario</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

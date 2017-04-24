@@ -33,7 +33,7 @@
                             <div class="panel-body">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead><tr><th hidden="">Id</th><th>Paciente</th><th>Hora</th></tr></thead>
-                                                <%for (Cita cita : (ArrayList<Cita>) request.getSession().getAttribute("agenda")) {%>
+                                    <%for (Cita cita : (ArrayList<Cita>) request.getSession().getAttribute("agenda")) {%>
                                     <tr>
                                         <td hidden=""><%=cita.getId()%></td>
                                         <td><%=cita.getPaciente().getNombre() + " " + cita.getPaciente().getApellido()%></td>

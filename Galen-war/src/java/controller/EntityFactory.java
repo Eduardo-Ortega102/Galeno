@@ -1,6 +1,7 @@
 package controller;
 
 import entities.Historial;
+import entities.Horario;
 import entities.Medico;
 import entities.Paciente;
 import java.text.SimpleDateFormat;
