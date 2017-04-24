@@ -91,7 +91,7 @@
                                         <label for="passwordUsuario">Contraseña</label>
                                         <input type="password" name="passwordUsuario" id="password" value="<%=password(request.getSession().getAttribute("user"))%>"/><br/>
                                     </fieldset>
-                                    <input type="submit" id="Guardar" value="Guardar Cambios"/>
+                                    <input type="submit" id="Guardar" value="Actualizar"/>
                                 </form>
                            </div>
                    </div>
