@@ -109,5 +109,6 @@
                 out.println("</div>");
             }
         %>
+        <jsp:include page="/WEB-INF/footerRef.html"/>
     </body>
 </html>

@@ -29,7 +29,7 @@
                         </form>
                     </td>
                 </tr>
-            <%}%>
+                <%}%>
             </table>
         <%} else {%> <h1>No tiene citas hoy</h1><%}%>
     </body>

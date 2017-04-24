@@ -2,10 +2,10 @@ package controller.commands;
 
 import entities.Cita;
 import entities.Medico;
-import static java.time.LocalDate.now;
-import static java.time.format.DateTimeFormatter.ofPattern;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class citasMedico extends FrontCommand {
@@ -13,7 +13,7 @@ public class citasMedico extends FrontCommand {
     @Override
     public void process() {
         Medico medico = (Medico) request.getSession().getAttribute("user");
-        String fecha = now().format(ofPattern("yyyy-MM-dd"));
+        String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         List<Cita> citasDelDia = citasDelDia(medico, fecha);
         request.getSession().setAttribute("agenda", citasDelDia);
         forward("/gestionarAgenda.jsp");
