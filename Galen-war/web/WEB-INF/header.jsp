@@ -101,7 +101,7 @@
                                     <a class="active" href="indexMedico.jsp">Agenda</a>
                                 </li>
                                 <li>
-                                    <a href="GestionarAgenda.jsp">Gestionar</a>
+                                    <a href="FrontController?command=citasMedico">Gestionar</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
