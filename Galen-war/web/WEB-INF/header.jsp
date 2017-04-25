@@ -107,7 +107,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="misPacientes.jsp"><i class="fa fa-edit fa-fw"></i> Mis Pacientes</a>
+                            <a href="FrontController?command=pacientesMedico"><i class="fa fa-edit fa-fw"></i> Mis Pacientes</a>
                         </li>
                       
                         <li>

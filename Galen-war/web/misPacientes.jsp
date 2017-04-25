@@ -1,3 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="entities.Paciente"%>
+<%@page import="java.util.Collection"%>
+<%@page import="entities.Medico"%>
+<%@page import="entities.Cita"%>
+<%@page import="entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +25,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
+                                <!-- /Codigo if para saber si tiene pacientes en primer lugar -->
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         Pacientes
@@ -32,6 +39,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <% List<Paciente> misPacientes = 
+                                                        (List<Paciente>) request.getSession().getAttribute("pacientesMedico"); %>
+                                                        <% for(Paciente pacientes: misPacientes) { %>
+                                                            <tr class="odd gradeX">
+                                                            <td> <%=(pacientes.getNombre())%> <%=(pacientes.getApellido())%></td>
+                                                    <% } %>
+
                                                 <tr class="odd gradeX">
                                                     <td>Danielle S. Kelley</td>
                                                 </tr>
