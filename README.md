@@ -5,4 +5,4 @@ Aplicación de software libre que permite a los usuarios llevar a cabo una gesti
 ### Funcionalidades:
 * Creación y gestión de un historial clínico personal.
 * Gestión de citas médicas.
-* Consulta de recetas.
+
