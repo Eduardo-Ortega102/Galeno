@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Paciente.findByEmail", query = "SELECT p FROM Paciente p WHERE p.email = :email"),
     @NamedQuery(name = "Paciente.findByPassword", query = "SELECT p FROM Paciente p WHERE p.password = :password")})
 public class Paciente implements Serializable, User {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
+    private Collection<Historial> historialCollection;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
     private Collection<Cita> citaCollection;
@@ -212,6 +214,15 @@ public class Paciente implements Serializable, User {
     @Override
     public void setCitaCollection(Collection<Cita> citaCollection) {
         this.citaCollection = citaCollection;
+    }
+
+    @XmlTransient
+    public Collection<Historial> getHistorialCollection() {
+        return historialCollection;
+    }
+
+    public void setHistorialCollection(Collection<Historial> historialCollection) {
+        this.historialCollection = historialCollection;
     }
     
 }

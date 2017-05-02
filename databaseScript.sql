@@ -23,7 +23,7 @@ CREATE TABLE "MEDICO" (
 	"EMAIL" VARCHAR(25) NOT NULL , 
 	"PASSWORD" VARCHAR(30) NOT NULL , 
 	"LOCALIZACION" VARCHAR(20) NOT NULL , 
-	"ESPECIALIDAD" VARCHAR(20) NOT NULL , 
+	"ESPECIALIDAD" VARCHAR(30) NOT NULL , 
 	"MINUTOSCONSULTA" INT NOT NULL , 
 	PRIMARY KEY ("COLEGIADO"));
 INSERT INTO "MEDICO" VALUES 
@@ -49,21 +49,22 @@ CREATE TABLE "HISTORIA" (
 	"ID" INT NOT NULL , 
         "FECHACREACION" VARCHAR(45) NOT NULL , 
         "MEDICO" VARCHAR(10) NOT NULL , 
-	"DESCRIPCION" VARCHAR(255) NOT NULL , 
+	"DESCRIPCION" VARCHAR(255) NOT NULL ,
+        "TRATAMIENTO" VARCHAR(255) NOT NULL, 
         "HISTORIAL" INT NOT NULL , 
 	PRIMARY KEY ("ID"),
         FOREIGN KEY ("HISTORIAL") REFERENCES "HISTORIAL"("ID"),
         FOREIGN KEY ("MEDICO") REFERENCES "MEDICO"("COLEGIADO"));
 INSERT INTO "HISTORIA" VALUES 
-(0, '2017-04-13', '333000000', 'dolor estomacal', 0),
-(1, '2017-04-25', '555000000', 'dificultad para respirar', 1);
+(0, '2017-04-13', '333000000', 'dolor estomacal','Paracetamol', 0),
+(1, '2017-04-25', '555000000', 'dificultad para respirar','Tetrahidrocanabinol', 1);
 
 
 
 CREATE TABLE "HORARIO" ( 
 	"ID" INT NOT NULL , 
         "MEDICO" VARCHAR(10) NOT NULL , 
-        "DIASEMANA" VARCHAR(9) NOT NULL , 
+        "DIASEMANA" VARCHAR(30) NOT NULL , 
 	"HORAINICIO" VARCHAR(5) NOT NULL , 
         "HORAFIN" VARCHAR(5) NOT NULL , 
 	PRIMARY KEY ("ID"),
@@ -92,21 +93,21 @@ INSERT INTO "CITA" VALUES
 
 INSERT INTO "PACIENTE" VALUES 
 ('12345678A', 'Poco', 'Yo','2007-02-29','123456789124Q', 928789456, 'pocoyo@gmail.com', '1234'),
-('14725836R', 'África', 'Romero','1978-06-12','963147753159V', 928456684, 'africa@gmail.com', '1234'),
+('14725836R', '�?frica', 'Romero','1978-06-12','963147753159V', 928456684, 'africa@gmail.com', '1234'),
 ('42986175P', 'Aarón', 'Castillo de la Fuente','1969-11-18','159753468122W', 928743691, 'aarón@gmail.com', '1234'),
 ('80940193L', 'Arantxa', 'Etxebarria','1984-01-26','789127893146X', 928129472, 'arantxa@gmail.com', '1234'),
 ('32368475T', 'Aurora', 'Fuentes','1956-08-11','761349861456Y', 649751345, 'aurora@gmail.com', '1234'),
 ('58165170X', 'Amparo', 'Benitez','1998-08-14','156789413540V', 657984613, 'amparo@gmail.com', '1234'),
 ('27372480L', 'Rafael', 'Abreu','1987-05-24','854135087312W', 891279992, 'rafael@gmail.com', '1234'),
 ('09446393V', 'Rafaela', 'Acosta','1999-11-01','632611881645Z', 671668665, 'rafaela@gmail.com', '1234'),
-('55572935J', 'Raimundo', 'Álvarez','1974-03-18','849374429436B', 642545476, 'raimundo@gmail.com', '1234'),
+('55572935J', 'Raimundo', '�?lvarez','1974-03-18','849374429436B', 642545476, 'raimundo@gmail.com', '1234'),
 ('00967871P', 'Ramiro', 'Alves','1995-09-03','839195674900M', 745950019, 'ramiro@gmail.com', '1234'),
 ('77835974H', 'Ramón', 'Antúnez','1981-03-15','889790753110B', 643491640, 'ramon@gmail.com', '1234'),
 ('24145949C', 'Salomé', 'Bermúdez','1963-11-12','770343493564L', 856493028, 'salome@gmail.com', '1234'),
 ('06769102H', 'Raúl', 'Bulchandani Bulchandani','1994-06-17','694306178103P', 626028149, 'raul@gmail.com', '1234'),
 ('79889691L', 'Sergio', 'Pulido Santana','1991-02-22','743807251566U', 830329593, 'sergio@gmail.com', '1234'),
-('38011485Y', 'Daniel Alejandro', 'Álamo Hernández','1992-01-08','722028084436O', 898155764, 'daniel@gmail.com', '1234'),
-('16015425L', 'Álvaro', 'Suárez Marrero','1993-05-27','751627212787Y', 766423251, 'alvaro@gmail.com', '1234'),
+('38011485Y', 'Daniel Alejandro', '�?lamo Hernández','1992-01-08','722028084436O', 898155764, 'daniel@gmail.com', '1234'),
+('16015425L', '�?lvaro', 'Suárez Marrero','1993-05-27','751627212787Y', 766423251, 'alvaro@gmail.com', '1234'),
 ('60099683Q', 'Aythami', 'López Déniz','1990-07-21','897383073355O', 799646589, 'aythami@gmail.com', '1234'),
 ('11062755P', 'Samuel', 'Blanco','1973-02-25','725459508804E', 858483791, 'samuel@gmail.com', '1234');
 
@@ -118,7 +119,7 @@ INSERT INTO "MEDICO" VALUES
 ('631063011', 'Tatiana', 'Sanchez', '16874623Y', 781017496, 'tatiana@gmail.com', '1234', 'Lanjarón', 'Oftalmología', 30),
 ('876757541', 'Teodoro', 'Soler', '59011930W', 742702187, 'teodoro@gmail.com', '1234', 'Valencia', 'Urología', 30),
 ('661241086', 'Tomás', 'Suárez', '77361441K', 698204749, 'tomas@gmail.com', '1234', 'Puebla de San Miguel', 'Dermatólogo', 30),
-('665745989', 'Rafa', 'Acosta', '65224706H', 765144694, 'rafa@gmail.com', '1234', 'Benidorm', 'Otorrinolaringología', 30);
+('665745989', 'Rafa', 'Acosta', '65224706H', 765144694, 'rafa@gmail.com', '1234', 'Benidorm', 'Otorrino', 30);
 
 INSERT INTO "HISTORIAL" VALUES 
 (2, '2017-04-03', '14725836R', 'Tos'),
@@ -141,14 +142,14 @@ INSERT INTO "HISTORIAL" VALUES
 (19, '2017-04-03', '60099683Q', 'no conocidas');
 
 INSERT INTO "HISTORIA" VALUES 
-(2, '2017-04-25', '812902893', 'Asma', 2),
-(3, '2017-04-25', '665745989', 'Rinitis', 3),
-(4, '2017-04-25', '631063011', 'Conjuntivitis', 4),
-(5, '2017-04-25', '661241086', 'Dermatitis', 5),
-(6, '2017-04-25', '661241086', 'Alergia a las picaduras de insectos', 9),
-(7, '2017-04-25', '333000000', 'Alergia a los alimentos', 7),
-(8, '2017-04-25', '555000000', 'Alergia a los medicamentos', 8),
-(9, '2017-04-25', '555000000', 'Anafilaxia', 10);
+(2, '2017-04-25', '812902893', 'Asma','Aripiprazol', 2),
+(3, '2017-04-25', '665745989', 'Rinitis','�cido acetilsalic�lico', 3),
+(4, '2017-04-25', '631063011', 'Conjuntivitis','Enoxaparina', 4),
+(5, '2017-04-25', '661241086', 'Dermatitis','Aripiprazol', 5),
+(6, '2017-04-25', '661241086', 'Alergia a las picaduras de insectos', 'Glipizida', 9),
+(7, '2017-04-25', '333000000', 'Alergia a los alimentos','Aripiprazol', 7),
+(8, '2017-04-25', '555000000', 'Alergia a los medicamentos','Levalbuterol', 8),
+(9, '2017-04-25', '555000000', 'Anafilaxia','Letrozol', 10);
 
 INSERT INTO "HORARIO" VALUES 
 (5, '789456123', 'LUNES', '08:30', '14:30'),

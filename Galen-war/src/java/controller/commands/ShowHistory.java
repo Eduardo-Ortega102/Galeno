@@ -10,7 +10,7 @@ public class ShowHistory extends FrontCommand {
         if (existHistory(parseInt((String) request.getParameter("historyId"))))
             forward("/historialClinico.jsp");
         else 
-            forward("no se a donde mandarlo");
+            forward("index.jsp");
     }
 
     private boolean existHistory(Integer historyId) {

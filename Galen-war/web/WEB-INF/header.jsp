@@ -1,4 +1,5 @@
 
+<%@page import="entities.Paciente"%>
 <%@page import="entities.Medico"%>
 <%@page import="entities.User"%>
 <%!
@@ -195,11 +196,8 @@
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Mi historial<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="historialClinico.jsp">A</a>
-                                </li>
-                                <li>
-                                    <a href="historialClinico.jsp">B</a>
+                                <li><% int idHistorial = ((Paciente) request.getSession().getAttribute("user")).getHistorial().getId(); %>
+                                    <a href="FrontController?command=ShowHistory&historyId=<%= idHistorial%>">Mi historial clínico</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

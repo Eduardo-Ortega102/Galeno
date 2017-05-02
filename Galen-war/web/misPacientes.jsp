@@ -36,6 +36,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Paciente</th>
+                                                    <th>Historial</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -43,27 +44,12 @@
                                                         (List<Paciente>) request.getSession().getAttribute("pacientesMedico"); %>
                                                         <% for(Paciente pacientes: misPacientes) { %>
                                                             <tr class="odd gradeX">
-                                                            <td> <%=(pacientes.getNombre())%> <%=(pacientes.getApellido())%></td>
+                                                            <td> <%=(pacientes.getNombre())%> <%=(pacientes.getApellido())
+                                                            %> <% int idHistorial = pacientes.getHistorial().getId(); %></td>
+                                                            <td><a href="FrontController?command=ShowHistory&historyId=<%= idHistorial%>">Ver</a></td>
                                                     <% } %>
-
-                                                <tr class="odd gradeX">
-                                                    <td>Danielle S. Kelley</td>
-                                                </tr>
-                                                <tr class="even gradeC">
-                                                    <td>Roger A. Bruce</td>
-                                                </tr>
-                                                <tr class="odd gradeA">
-                                                    <td>Lisa B. Marconi</td>
-                                                </tr>
-                                                <tr class="even gradeA">
-                                                    <td>Margaret W. Moses</td>
-                                                </tr>
-                                                <tr class="odd gradeA">
-                                                    <td>Carli J. Snyder</td>
-                                                </tr>
-                                                <tr class="even gradeA">
-                                                    <td>Michael R. Cunningham</td>
-                                                </tr>
+                                                            
+                                                
                                             </tbody>
                                         </table>
                                     </div>

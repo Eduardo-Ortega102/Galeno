@@ -23,6 +23,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Historia.findByFechacreacion", query = "SELECT h FROM Historia h WHERE h.fechacreacion = :fechacreacion")
     , @NamedQuery(name = "Historia.findByDescripcion", query = "SELECT h FROM Historia h WHERE h.descripcion = :descripcion")})
 public class Historia implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "TRATAMIENTO")
+    private String tratamiento;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -123,6 +128,14 @@ public class Historia implements Serializable {
     @Override
     public String toString() {
         return "entities.Historia[ id=" + id + " ]";
+    }
+
+    public String getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setTratamiento(String tratamiento) {
+        this.tratamiento = tratamiento;
     }
     
 }
