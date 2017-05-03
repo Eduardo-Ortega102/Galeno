@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <jsp:include page="/WEB-INF/footerRef.html"/>
+                        </div>                
+                        <jsp:include page="/WEB-INF/printFooterRef.html"/>
                     </body>
                 </html>

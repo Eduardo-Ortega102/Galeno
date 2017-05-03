@@ -7,13 +7,28 @@
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script src="vendor/datatables-plugins/dataTables.buttons.min.js"></script>
+<script src="vendor/pdfmake/pdfmake.min.js"></script>
+<script src="vendor/pdfmake/vfs_fonts.js"></script>
+<script src="vendor/datatables-plugins/buttons.html5.min.js"></script>
+<script src="vendor/datatables-plugins/buttons.bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#dataTables-example').DataTable({
-        responsive: true ,
+        responsive: true,
         "language": {
             "url": "vendor/datatables-plugins/Spanish.json"
-        }
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                message: 'Historias Clinicas',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
+        ]
     });
 });
 </script>
