@@ -184,7 +184,7 @@
                                     <a  href="gestionarCita.jsp">Concertar cita</a>
                                 </li>
                                 <li>
-                                    <a href="gestionarCita.jsp">Historial citas</a>
+                                    <a href="verCitaPaciente.jsp">Historial citas</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -197,7 +197,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Mi historial<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li><% int idHistorial = ((Paciente) request.getSession().getAttribute("user")).getHistorial().getId(); %>
-                                    <a href="FrontController?command=ShowHistory&historyId=<%= idHistorial%>">Mi historial clínico</a>
+                                    <a href="FrontController?command=ShowHistory&historyId=<%=idHistorial%>">Mi historial clínico</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

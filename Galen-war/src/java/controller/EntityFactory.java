@@ -1,5 +1,6 @@
 package controller;
 
+import entities.Cita;
 import entities.Historial;
 import entities.Horario;
 import entities.Medico;
@@ -33,6 +34,14 @@ public final class EntityFactory {
         return new Historial(historialId, fecha, notas, paciente(request));
     }
 
+        
+    public static Cita cita(HttpServletRequest request, Paciente paciente, int citaId) {
+        Cita cita = new Cita(citaId, request.getParameter("fecha"), request.getParameter("hora"));
+        cita.setMedico(FacadeFactory.medicoFacade().find(request.getParameter("medico")));
+        cita.setPaciente(paciente);
+        return cita;
+    }
+    
     private static String dni(HttpServletRequest request) {
         return request.getParameter("dniUsuario");
     }
