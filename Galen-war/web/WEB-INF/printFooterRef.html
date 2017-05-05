@@ -12,6 +12,23 @@
 <script src="vendor/pdfmake/vfs_fonts.js"></script>
 <script src="vendor/datatables-plugins/buttons.html5.min.js"></script>
 <script src="vendor/datatables-plugins/buttons.bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var tablaPaciente = $('#tablaDatos').DataTable( {
+            responsive: true,
+            fixedHeader: {
+                header: true,
+                footer: true
+            },
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            "searching": false
+        } );
+    } );
+</script>
+
 <script>
 $(document).ready(function() {
     $('#dataTables-example').DataTable({
@@ -19,13 +36,34 @@ $(document).ready(function() {
         "language": {
             "url": "vendor/datatables-plugins/Spanish.json"
         },
-        dom: 'Bfrtip',
+        dom: 'frtipB',
+        fixedHeader: {
+            header: true,
+            footer: true
+        },
         buttons: [
             {
                 extend: 'pdfHtml5',
                 message: 'Historias Clinicas',
                 exportOptions: {
                     columns: ':visible'
+                },
+                customize: function (doc) {
+                    doc.content.splice( 1, 0, 
+                    {
+                        text: 'Datos del Paciente', 
+                        style: 'header',
+                        margin: [ 0, 0, 0, 6 ]
+                    },
+                    {
+			ul: [
+				'DNI:',
+				'Nombre:',
+				'Apellido:'
+			],
+                        margin: [ 0, 0, 0, 12 ]
+                    }    
+                        );
                 }
             }
         ]
