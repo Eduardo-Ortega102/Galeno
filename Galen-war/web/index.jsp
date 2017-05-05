@@ -58,6 +58,7 @@
                         historial con su médico, y tendrá comodidades que no tendría de otra manera.
                     </p>
                     <p><a class="btn btn-primary btn-lg" href="register.jsp" role="button">Registrate ya »</a></p>
+                    <p>Cantidad de medicos: <%=request.getAttribute("doctors")%>    Cantidad de pacientes: <%=request.getAttribute("patients")%></p>
                 </div>
             </div>
             <section class="centerdesk">

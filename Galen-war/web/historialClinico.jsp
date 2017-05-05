@@ -28,7 +28,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading"> Historial</div>
                                 <div class="panel-body">
-                                    <table  class="table compact" id="tablaDatos">
+                                    <table  width="100%" class="table compact" id="tablaDatos">
                                         <thead>
                                             <tr>
                                                 <th colspan="2">Paciente</th>
