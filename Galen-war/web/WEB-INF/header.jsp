@@ -190,7 +190,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="misMedicos.jsp"><i class="fa fa-edit fa-fw"></i> Mis medicos</a>
+                            <a href="FrontController?command=medicosPaciente"><i class="fa fa-edit fa-fw"></i> Mis medicos</a>
                         </li>
                       
                         <li>
