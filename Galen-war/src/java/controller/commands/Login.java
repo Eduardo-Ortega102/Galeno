@@ -10,7 +10,7 @@ public class Login extends FrontCommand {
     @Override
     public void process() {
         if (existUser("paciente"))  forward("/indexPaciente.jsp");
-        else if(existUser("medico"))forward("/indexMedico.jsp");
+        else if(existUser("medico"))forward("/FrontController?command=citasMedico");
         else 
             forward("/index.jsp?error=1");
     }
