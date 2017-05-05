@@ -9,7 +9,7 @@ public class Logout extends FrontCommand{
         HttpSession session = request.getSession();
         session.removeAttribute("user"); 
         session.invalidate();
-        forward("/index.jsp");
+        forward("/IndexServlet");
     }
     
 }

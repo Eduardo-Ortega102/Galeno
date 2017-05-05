@@ -38,20 +38,13 @@
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead><tr><th>Fecha</th><th>Hora</th><th>Medico</th><th>Lugar</th><th>Eliminar</th></tr></thead>
+                                    <thead><tr><th>Fecha</th><th>Hora</th><th>Medico</th><th>Lugar</th></tr></thead>
                                     <%for (Cita cita : citasPaciente) {%>
                                     <tr>
                                         <td><%=cita.getFecha()%></td>
                                         <td><%=cita.getHora()%></td>
                                         <td><%=cita.getMedico().getNombre() +" "+ cita.getMedico().getApellido()%></td>
                                         <td><%=cita.getMedico().getLocalizacion()%></td>
-                                        <td>
-                                            <form action="FrontController" method="POST">
-                                                <input type="hidden" name="command" value="Eliminar" />
-                                                <input type="hidden" name="id" value="<%=cita.getId()%>"/>
-                                                <button type="submit" class="btn btn-danger">Eliminar cita.</button> 
-                                            </form>
-                                        </td>
                                     </tr>
                                     <%}%>
                                 </table>
