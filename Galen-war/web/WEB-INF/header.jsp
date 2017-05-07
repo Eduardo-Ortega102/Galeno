@@ -17,7 +17,7 @@
     }
 
     private String printHomeLink(Object user) {
-        return type(user).equals("Medico") ? "<a href=\"indexMedico.jsp\">Galeno</a>" : "<a href=\"indexPaciente.jsp\">Galeno";
+        return type(user).equals("Medico") ? "<a href=\"citasMedico.jsp\">Galeno</a>" : "<a href=\"indexPaciente.jsp\">Galeno";
     }
 
     private String printMenu(Object user) {
@@ -58,7 +58,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color:black" href="indexMedico.jsp"><%=getName(request.getSession())%></a>
+                <a class="navbar-brand" style="color:black" href="gestionarAgenda.jsp"><%=getName(request.getSession())%></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -99,10 +99,7 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Planificacion <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class="active" href="indexMedico.jsp">Agenda</a>
-                                </li>
-                                <li>
-                                    <a href="FrontController?command=citasMedico">Gestionar</a>
+                                    <a class="active" href="FrontController?command=citasMedico">Agenda</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
