@@ -3,6 +3,7 @@ package controller;
 import static controller.FacadeFactory.citaFacade;
 import static controller.FacadeFactory.historialFacade;
 import entities.Cita;
+import entities.Historia;
 import entities.Historial;
 import entities.Medico;
 import entities.Paciente;
@@ -36,6 +37,7 @@ public final class EntityFactory {
         });
         return historiales.get(historiales.size() - 1).getId() + 1;
     }
+    
 
     private EntityFactory() {
     }
@@ -59,6 +61,18 @@ public final class EntityFactory {
         String notas = request.getParameter("alergiasPaciente");
         Integer historialId = generateHistorialId();
         return new Historial(historialId, fecha, notas, paciente(request));
+    }
+    
+    public static Historia historia(HttpServletRequest request,int historiaId) {
+        String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        String descripcion = request.getParameter("descripcion");
+        String tratamiento = request.getParameter("tratamiento");
+        Historia historia = new Historia(historiaId,fecha,descripcion);
+        historia.setTratamiento(tratamiento);
+        historia.setMedico((Medico)request.getSession().getAttribute("medico"));
+        historia.setHistorial((Historial)request.getSession().getAttribute("history"));
+        return historia;
+        
     }
 
     public static Cita cita(HttpServletRequest request, Paciente paciente) {

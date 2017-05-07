@@ -75,6 +75,7 @@
                                     <%} else {%> 
                                     <h1 class="gradeA">No tiene historial</h1>
                                     <%}%>
+                                    <a class="btn btn-primary pull-right" href="añadirHistoria.jsp" role="button">Añadir Historia</a>
                                 </div>
                             </div>
                         </div>
