@@ -1,4 +1,11 @@
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="beans.UserCounter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    UserCounter counter = (UserCounter) new InitialContext().lookup("java:global/Galen/Galen-ejb/UserCounter");
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,11 +28,6 @@
                         <label class="sr-only" for="pass">Password</label>
                         <input type="password" class="form-control" id="pass" name="password" placeholder="password">
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Recuerdame
-                        </label>
-                    </div>
                     <button type="submit" class="btn btn-primary">Iniciar Sesion</button>               
                 </form>
                 <hr>
@@ -43,6 +45,10 @@
                     out.println("<div class=\"alert alert-success\">");
                     out.println("<strong>Enhorabuena!</strong> Su registro se ha realizado con éxito");
                     out.println("</div>");
+                } else if (request.getParameter("successfulDelete") != null) {
+                    out.println("<div class=\"alert alert-success\">");
+                    out.println("Su cuenta se ha eliminado");
+                    out.println("</div>");
                 }
             %>
         </nav>
@@ -57,8 +63,8 @@
                         con los datos más relevantes. Después de unos sencillos pasos, tendrá su aplicación lista para compartir su
                         historial con su médico, y tendrá comodidades que no tendría de otra manera.
                     </p>
-                    <p><a class="btn btn-primary btn-lg" href="register.jsp" role="button">Registrate ya »</a></p>
-                    <p>Cantidad de medicos: <%=request.getAttribute("doctors")%>    Cantidad de pacientes: <%=request.getAttribute("patients")%></p>
+                    <p><a class="btn btn-primary btn-lg" href="registro.jsp" role="button">Registrate ya »</a></p>
+                    <p>Cantidad de medicos: <%=counter.getAmountOfDoctors()%>    Cantidad de pacientes: <%=counter.getAmountOfPatients()%></p>
                 </div>
             </div>
             <section class="centerdesk">

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,8 +22,8 @@ public abstract class FrontCommand {
     
     public void forward(String target) {
         try {
-            context.getRequestDispatcher(target).forward(request, response);
-        } catch (ServletException | IOException ex) {
+            response.sendRedirect("/Galen-war" + target);
+        } catch (IOException ex) {
             Logger.getLogger(FrontCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -25,7 +25,7 @@ public class Eliminar extends FrontCommand{
         FacadeFactory.medicoFacade().edit(medico);
         FacadeFactory.pacienteFacade().edit(paciente);
         FacadeFactory.citaFacade().remove(cita);
-        forward("/verCitaPaciente.jsp");
+        forward("/indexPaciente.jsp");
     }
     
 }

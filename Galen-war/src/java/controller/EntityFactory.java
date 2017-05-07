@@ -1,14 +1,41 @@
 package controller;
 
+import static controller.FacadeFactory.citaFacade;
+import static controller.FacadeFactory.historialFacade;
 import entities.Cita;
 import entities.Historial;
 import entities.Medico;
 import entities.Paciente;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 public final class EntityFactory {
+
+    private static Integer generateCitaId(Paciente paciente) {
+        List<Cita> citas = citaFacade().findAll();
+        Collections.sort(citas, new Comparator<Cita>() {
+            @Override
+            public int compare(Cita o1, Cita o2) {
+                return Integer.compare(o1.getId(), o2.getId());
+            }
+        });
+        return citas.get(citas.size() - 1).getId() + 1;
+    }
+
+    private static Integer generateHistorialId() {
+        List<Historial> historiales = historialFacade().findAll();
+        Collections.sort(historiales, new Comparator<Historial>() {
+            @Override
+            public int compare(Historial o1, Historial o2) {
+                return Integer.compare(o1.getId(), o2.getId());
+            }
+        });
+        return historiales.get(historiales.size() - 1).getId() + 1;
+    }
 
     private EntityFactory() {
     }
@@ -27,20 +54,21 @@ public final class EntityFactory {
         return new Paciente(dni(request), nombre(request), apellidos(request), fechaNacimiento, ssocial, telefono(request), email(request), password(request));
     }
 
-    public static Historial historial(HttpServletRequest request, int historialId) {
+    public static Historial historial(HttpServletRequest request) {
         String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         String notas = request.getParameter("alergiasPaciente");
+        Integer historialId = generateHistorialId();
         return new Historial(historialId, fecha, notas, paciente(request));
     }
 
-        
-    public static Cita cita(HttpServletRequest request, Paciente paciente, int citaId) {
+    public static Cita cita(HttpServletRequest request, Paciente paciente) {
+        Integer citaId = generateCitaId(paciente);
         Cita cita = new Cita(citaId, request.getParameter("fecha"), request.getParameter("hora"));
         cita.setMedico(FacadeFactory.medicoFacade().find(request.getParameter("medico")));
         cita.setPaciente(paciente);
         return cita;
     }
-    
+
     private static String dni(HttpServletRequest request) {
         return request.getParameter("dniUsuario");
     }

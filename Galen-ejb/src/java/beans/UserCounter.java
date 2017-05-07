@@ -20,7 +20,7 @@ public class UserCounter {
         amountOfPatients = pacienteFacade.count();
     }
     
-    @Schedule(hour = "*", minute = "*", second = "*/5")
+    @Schedule(hour = "*", minute = "*", second = "*")
     public void execute() {
         amountOfDoctors = medicoFacade.count();
         amountOfPatients = pacienteFacade.count();

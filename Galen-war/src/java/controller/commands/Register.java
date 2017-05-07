@@ -26,7 +26,7 @@ public class Register extends FrontCommand{
     private boolean crearPaciente() {
         if (existPatient()) return false;
         pacienteFacade().create(paciente(request));
-        historialFacade().create(historial(request, historialFacade().count()));
+        historialFacade().create(historial(request));
         return true;
     }
 

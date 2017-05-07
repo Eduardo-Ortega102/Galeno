@@ -24,12 +24,16 @@
                 </div>
 
 <%
-    String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-    String id = ((Paciente) request.getSession().getAttribute("user")).getDni();
-    Paciente paciente = FacadeFactory.pacienteFacade().find(id);
     ArrayList<Cita> proximasCitas = new ArrayList<Cita>();
-    for (Cita cita : paciente.getCitaCollection()) {
-        if (cita.getFecha().compareTo(fecha) > 0) proximasCitas.add(cita);
+    try {
+        String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String id = ((Paciente) request.getSession().getAttribute("user")).getDni();
+        Paciente paciente = FacadeFactory.pacienteFacade().find(id);
+        for (Cita cita : paciente.getCitaCollection()) {
+            if (cita.getFecha().compareTo(fecha) > 0) proximasCitas.add(cita);
+        }
+    } catch (Exception e) {
+        response.sendRedirect(request.getContextPath() + "/WEB-INF/UnknowCommand.jsp");
     }
 %>
                  <%if (proximasCitas.size() > 0) {%>
