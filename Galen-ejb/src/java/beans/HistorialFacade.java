@@ -19,6 +19,6 @@ public class HistorialFacade extends AbstractFacade<Historial> {
 
     public HistorialFacade() {
         super(Historial.class);
-    }
+    } 
     
 }

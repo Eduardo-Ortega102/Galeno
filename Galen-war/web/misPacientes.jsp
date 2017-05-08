@@ -46,7 +46,7 @@
                                                             <tr class="odd gradeX">
                                                             <td> <%=(pacientes.getNombre())%> <%=(pacientes.getApellido())
                                                             %> <% int idHistorial = pacientes.getHistorial().getId(); %></td>
-                                                            <td><a href="FrontController?command=ShowHistory&historyId=<%= idHistorial%>">Ver</a></td>
+                                                            <td><a class="btn btn-success btn-sm"href="FrontController?command=ShowHistory&historyId=<%= idHistorial%>">Ver</a></td>
                                                     <% } %>
                                                             
                                                 

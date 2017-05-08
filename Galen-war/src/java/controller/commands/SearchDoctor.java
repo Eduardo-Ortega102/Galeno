@@ -6,12 +6,9 @@ public class SearchDoctor extends FrontCommand {
 
     @Override
     public void process() {
-        String colegiado = request.getParameter("colegiado").trim();
-        if (colegiado.isEmpty()) 
-            setAttribute("list", medicoFacade().findAll());
-        else 
-            setAttribute("record", medicoFacade().find(colegiado));
-        forward("/resultadoBusqueda.jsp");
+        setAttribute("listaMedicos", medicoFacade().findAll());
+        setAttribute("medicoBuscar",request.getParameter("medicoBuscar"));
+        forward("/allMedicos.jsp");
     }
 
     private void setAttribute(String field, Object value) {

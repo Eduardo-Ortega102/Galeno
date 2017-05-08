@@ -64,12 +64,12 @@ public final class EntityFactory {
     }
     
     public static Historia historia(HttpServletRequest request,int historiaId) {
-        String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String descripcion = request.getParameter("descripcion");
         String tratamiento = request.getParameter("tratamiento");
         Historia historia = new Historia(historiaId,fecha,descripcion);
         historia.setTratamiento(tratamiento);
-        historia.setMedico((Medico)request.getSession().getAttribute("medico"));
+        historia.setMedico((Medico)request.getSession().getAttribute("user"));
         historia.setHistorial((Historial)request.getSession().getAttribute("history"));
         return historia;
         

@@ -32,7 +32,7 @@
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead><tr><th hidden="">Id</th><th>Paciente</th><th>Hora</th></tr></thead>
+                                    <thead><tr><th hidden="">Id</th><th>Paciente</th><th>Hora</th><th>Historial</th></tr></thead>
                                     <%for (Cita cita : (ArrayList<Cita>) request.getSession().getAttribute("agenda")) {%>
                                     <tr>
                                         <td hidden=""><%=cita.getId()%></td>
@@ -42,7 +42,7 @@
                                             <form action="FrontController" method="post">
                                                 <input type="hidden" name="command" value="ShowHistory" />
                                                 <input type="hidden" name="historyId" value="<%=cita.getPaciente().getHistorial().getId()%>"> 
-                                                <button type="submit">Ver Historial</button>
+                                                <button class="btn btn-success btn-sm"type="submit">Ver</button>
                                             </form>
                                         </td>
                                     </tr>

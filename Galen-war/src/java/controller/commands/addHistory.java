@@ -1,24 +1,23 @@
 package controller.commands;
 
-import beans.HistoriaFacade;
 import static controller.EntityFactory.historia;
-import entities.Cita;
+import controller.FacadeFactory;
+import static controller.FacadeFactory.historiaFacade;
+import java.util.Collection;
+import entities.Historial;
 import entities.Historia;
-import entities.Medico;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import javax.ejb.EJB;
 public class addHistory extends FrontCommand {
 
-    @EJB
-    HistoriaFacade ejb;
     
     @Override
     public void process() {
-        ejb.create(historia(request,ejb.count()));
+        Historia nuevaHistoria = historia(request,historiaFacade().count());
+        historiaFacade().create(nuevaHistoria);
+        Historial historial = (Historial)request.getSession().getAttribute("history");
+        Collection<Historia> historiasPaciente = historial.getHistoriaCollection();
+        historiasPaciente.add(nuevaHistoria);
+        historial.setHistoriaCollection(historiasPaciente);
+        FacadeFactory.historialFacade().edit(historial);
         forward("/historialClinico.jsp");
     }
     

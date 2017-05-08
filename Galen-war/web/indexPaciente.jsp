@@ -54,7 +54,7 @@
                                             <form action="FrontController" method="POST">
                                                 <input type="hidden" name="command" value="Eliminar" />
                                                 <input type="hidden" name="id" value="<%=cita.getId()%>"/>
-                                                <button type="submit" class="btn btn-danger">Eliminar cita</button> 
+                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar cita</button> 
                                             </form>
                                         </td>
                                     </tr>

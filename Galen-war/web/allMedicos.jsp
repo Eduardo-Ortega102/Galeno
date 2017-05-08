@@ -19,7 +19,7 @@
                 <div id="page-wrapper">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1 class="page-header">Medicos</h1>
+                                <h1 class="page-header">Mis medicos</h1>
                             </div>
                             <!-- /.col-lg-12 -->
                         </div>
@@ -45,7 +45,7 @@
                                             </thead>
                                             <tbody>
                                                 <% List<Medico> misMedicos = 
-                                                        (List<Medico>) request.getSession().getAttribute("pacientesMedico"); %>
+                                                        (List<Medico>) request.getSession().getAttribute("listaMedicos"); %>
                                                         <% for(Medico medicos: misMedicos) { %>
                                                             <tr class="odd gradeX">
                                                                 <td> <%=(medicos.getNombre())%> </td>
@@ -65,6 +65,26 @@
 
                 </div>
         </div>
-        <jsp:include page="/WEB-INF/footerRef.html"/>        
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/metisMenu/metisMenu.min.js"></script>
+        <script src="vendor/sb-admin/js/sb-admin-2.js"></script>
+        <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+        <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
+        <script>
+        $(document).ready(function() {
+            var searchValue = '<%=(request.getSession().getAttribute("medicoBuscar"))%>';
+            $('#dataTables-example').DataTable({
+                responsive: true ,
+                "language": {
+                    "url": "vendor/datatables-plugins/Spanish.json"
+                },
+                  "search": {
+                    "search": searchValue
+                }
+            });
+        });
+        </script>
     </body>
 </html>

@@ -96,20 +96,15 @@
                             <!-- /input-group -->
                         </li>
                         <li class="active">
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Planificacion <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a class="active" href="FrontController?command=citasMedico">Agenda</a>
-                                </li>
-                            </ul>
+                            <a href="FrontController?command=citasMedico"><i class="fa fa-book fa-fw"></i> Agenda</a>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="FrontController?command=pacientesMedico"><i class="fa fa-edit fa-fw"></i> Mis Pacientes</a>
+                            <a href="FrontController?command=pacientesMedico"><i class="fa fa-users fa-fw"></i> Mis Pacientes</a>
                         </li>
                       
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Historial<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-calendar fa-fw"></i> Planificacion<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="verHorario.jsp">Ver mi horario</a>
@@ -164,18 +159,19 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Buscar medico">
+                            <form action="FrontController" method="POST" class="input-group custom-search-form">
+                                <input type="hidden" name="command" value="SearchDoctor" />
+                                <input type="text" class="form-control" name ="medicoBuscar" placeholder="Buscar medico">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
+                                    <button class="btn btn-default" type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
-                            </div>
+                            </form>
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Mis citas <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-calendar-check-o fa-fw"></i> Mis citas <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a  href="gestionarCita.jsp">Concertar cita</a>
@@ -187,18 +183,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="FrontController?command=medicosPaciente"><i class="fa fa-edit fa-fw"></i> Mis medicos</a>
+                            <a href="FrontController?command=medicosPaciente"><i class="fa fa-user-md fa-fw"></i> Mis medicos</a>
                         </li>
                       
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Mi historial<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><% int idHistorial = ((Paciente) request.getSession().getAttribute("user")).getHistorial().getId(); %>
-                                    <a href="FrontController?command=ShowHistory&historyId=<%=idHistorial%>">Mi historial clínico</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                        <li><% int idHistorial = ((Paciente) request.getSession().getAttribute("user")).getHistorial().getId(); %>
+                            <a href="FrontController?command=ShowHistory&historyId=<%=idHistorial%>"><i class="fa fa-bar-chart-o fa-fw"></i> Mi historial</a>
                         </li>
+                            <!-- /.nav-second-level -->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
