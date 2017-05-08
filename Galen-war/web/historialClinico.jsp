@@ -1,3 +1,4 @@
+<%@page import="entities.Medico"%>
 <%@page import="entities.Paciente"%>
 <%@page import="entities.Historial"%>
 <%@page import="entities.Historia"%>
@@ -75,7 +76,17 @@
                                     <%} else {%> 
                                     <h1 class="gradeA">No tiene historial</h1>
                                     <%}%>
-                                    <a class="btn btn-primary pull-right" href="añadirHistoria.jsp" role="button">Añadir Historia</a>
+                                    
+                                    <%!
+                                        private String type(Object user) {
+                                            return user instanceof Medico ? "Medico" : "Paciente";
+                                        }
+                                    %>
+                                    <%
+                                        if(type(session.getAttribute("user"))=="Medico") {
+                                    %>
+                                        <a class="btn btn-primary pull-right" href="añadirHistoria.jsp" role="button">Añadir Historia</a>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>

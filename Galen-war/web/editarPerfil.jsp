@@ -76,13 +76,13 @@
                                         <label for="passwordUsuario">Contraseña</label>
                                         <input type="password" name="passwordUsuario" id="password" value="<%=user.getPassword()%>"/><br/>
                                     </fieldset>
-                                    <input type="submit" id="Guardar" value="Actualizar"/>
+                                    <input type="submit" class="btn btn-primary" id="Guardar" value="Actualizar"/>
                                 </form>
                                 <form action="FrontController" method="POST">
                                     <input type="hidden" name="command" value="EliminarCuenta" />
                                     <input type="hidden" name="id" value="<%=getId(user)%>"/>
                                     <input type="hidden" name="type" value="<%=type(user)%>"/>
-                                    <button type="submit" class="btn btn-danger">Eliminar cuenta</button> 
+                                    <button style="margin-top:10px;"type="submit" class="btn btn-danger">Eliminar cuenta</button> 
                                 </form>
                            </div>
                     </div>

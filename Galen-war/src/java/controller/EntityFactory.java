@@ -56,11 +56,11 @@ public final class EntityFactory {
         return new Paciente(dni(request), nombre(request), apellidos(request), fechaNacimiento, ssocial, telefono(request), email(request), password(request));
     }
 
-    public static Historial historial(HttpServletRequest request) {
-        String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+    public static Historial historial(HttpServletRequest request, Paciente paciente) {
+        String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String notas = request.getParameter("alergiasPaciente");
         Integer historialId = generateHistorialId();
-        return new Historial(historialId, fecha, notas, paciente(request));
+        return new Historial(historialId, fecha, notas, paciente);
     }
     
     public static Historia historia(HttpServletRequest request,int historiaId) {

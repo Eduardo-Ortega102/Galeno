@@ -12,7 +12,7 @@ public class Eliminar extends FrontCommand{
     @Override
     public void process() {
         Cita cita = FacadeFactory.citaFacade().find(Integer.parseInt(request.getParameter("id")));
-        Paciente paciente = FacadeFactory.pacienteFacade().find(cita.getPaciente().getDni());
+        Paciente paciente = (Paciente) request.getSession().getAttribute("user");
         Medico medico = FacadeFactory.medicoFacade().find(cita.getMedico().getColegiado());
         Collection<Cita> citasPaciente = paciente.getCitaCollection();
         Collection<Cita> citasMedico = medico.getCitaCollection();

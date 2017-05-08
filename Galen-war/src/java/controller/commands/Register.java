@@ -1,4 +1,3 @@
-
 package controller.commands;
 
 import static controller.EntityFactory.historial;
@@ -7,6 +6,8 @@ import static controller.EntityFactory.paciente;
 import static controller.FacadeFactory.pacienteFacade;
 import static controller.FacadeFactory.medicoFacade;
 import static controller.FacadeFactory.historialFacade;
+import entities.Historial;
+import entities.Paciente;
 
 public class Register extends FrontCommand{
 
@@ -20,13 +21,17 @@ public class Register extends FrontCommand{
         if (success) 
             forward("/index.jsp?successfulRegister=true");
         else
-            forward("/register.jsp?error=1");
+            forward("/registro.jsp?error=1");
     }
 
     private boolean crearPaciente() {
         if (existPatient()) return false;
-        pacienteFacade().create(paciente(request));
-        historialFacade().create(historial(request));
+        Paciente paciente = paciente(request);
+        pacienteFacade().create(paciente);
+        Historial historial = historial(request, paciente);
+        historialFacade().create(historial);
+        paciente.setHistorial(historial);
+        pacienteFacade().edit(paciente);
         return true;
     }
 

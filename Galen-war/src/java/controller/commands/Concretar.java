@@ -13,7 +13,7 @@ public class Concretar extends FrontCommand {
     @Override
     public void process() {
         Paciente paciente = (Paciente) request.getSession().getAttribute("user");
-        final Cita cita = cita(request, paciente);
+        Cita cita = cita(request, paciente);
         citaFacade().create(cita);
 
         Medico medico = FacadeFactory.medicoFacade().find(cita.getMedico().getColegiado());
