@@ -13,6 +13,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <jsp:include page="/WEB-INF/headerRef.html"/>
         <link href="css/custom.css" rel="stylesheet">
     </head>
     <body>
@@ -64,7 +65,10 @@
                         historial con su médico, y tendrá comodidades que no tendría de otra manera.
                     </p>
                     <p><a class="btn btn-primary btn-lg" href="registro.jsp" role="button">Registrate ya »</a></p>
-                    <p>Cantidad de medicos: <%=counter.getAmountOfDoctors()%>    Cantidad de pacientes: <%=counter.getAmountOfPatients()%></p>
+                    <p style="text-align:right;">Ya forman parte: 
+                        <a class="btn btn-success btn-sm" href="#" role="button"><%=counter.getAmountOfDoctors()%> medicos <i class="fa fa-user-md fa-fw"></i></a>
+                        <a class="btn btn-success btn-sm" href="#" role="button"><%=counter.getAmountOfPatients()%> pacientes <i class="fa fa-user fa-fw"></i></a>
+                    </p>
                 </div>
             </div>
             <section class="centerdesk">
