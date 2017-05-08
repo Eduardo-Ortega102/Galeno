@@ -91,10 +91,10 @@
                             </p>
                         </div>
                         <div class="col-md-4">
-                            <span class="glyphicon glyphicon-folder-close glyphicon-large" aria-hidden="true"></span>
-                            <h3>Consulta tus recetas</h3>
+                            <span class="glyphicon glyphicon-user glyphicon-large" aria-hidden="true"></span>
+                            <h3>Encuentra tu medico</h3>
                             <p>
-                                Gestiona en todo momento tus recetas 
+                                Busca al medico que necesites de forma rapida y eficaz.Encuentra aquellos disponibles por nombre,especialidad e incluso localizacion.
                             </p>
                         </div>
                     </div>

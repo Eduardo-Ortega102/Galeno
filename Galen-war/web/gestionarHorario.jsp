@@ -54,24 +54,36 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">Editar Horario</h1>
-                            <form action="FrontController" method="POST">
-                                <input type="hidden" name="command" value="EditSchedule" />
-                                <%Schedule horario;%>
-                                <%for (String day : new String[]{"Lunes", "Martes", "Miercoles", "Jueves", "Viernes"}) {%>
-                                <fieldset>
-                                    <legend><%=day%></legend>
-                                    <%horario = horario(request, day);%>
-                                    <input type="hidden" name="id<%=day%>" value="<%=horario.getId()%>" />
-                                    <label for="inicio<%=day%>">Hora inicio: </label>
-                                    <input type="text" name="inicio<%=day%>" id="inicio<%=day%>" value="<%=horario.getStart()%>"/>
-                                    <label for="fin<%=day%>">Hora fin: </label>
-                                    <input type="text" name="fin<%=day%>" id="fin<%=day%>" value="<%=horario.getEnd()%>"/>
-                                    <br/>
-                                    <br/>
-                                </fieldset>
-                                <%}%>
-                                <input type="submit" id="Guardar" value="Actualizar"/>
-                            </form>
+                        </div>
+                            <!-- /.col-lg-12 -->
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Horario
+                                </div>
+                                <div class="panel-body">
+                                    <form action="FrontController" method="POST">
+                                        <input type="hidden" name="command" value="EditSchedule" />
+                                        <%Schedule horario;%>
+                                        <%for (String day : new String[]{"Lunes", "Martes", "Miercoles", "Jueves", "Viernes"}) {%>
+                                        <fieldset>
+                                            <legend><%=day%></legend>
+                                            <%horario = horario(request, day);%>
+                                            <input type="hidden" name="id<%=day%>" value="<%=horario.getId()%>" />
+                                            <label for="inicio<%=day%>">Hora inicio: </label>
+                                            <input type="text" name="inicio<%=day%>" id="inicio<%=day%>" value="<%=horario.getStart()%>"/>
+                                            <label for="fin<%=day%>">Hora fin: </label>
+                                            <input type="text" name="fin<%=day%>" id="fin<%=day%>" value="<%=horario.getEnd()%>"/>
+                                            <br/>
+                                            <br/>
+                                        </fieldset>
+                                        <%}%>
+                                        <input class ="btn btn-primary" type="submit" id="Guardar" value="Actualizar"/>
+                                    </form>
+                                </div>
+                            </div>
                             <br/><br/>  
                         </div>
                     </div>
