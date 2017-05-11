@@ -61,8 +61,8 @@
                     <p> 
                         Galeno es una aplicación que le permite llevar a cabo una gestión de su actividad clínica a través 
                         de diversas utilidades. En el momento en el que se registre, creará una base de su historial clínico 
-                        con los datos más relevantes. Después de unos sencillos pasos, tendrá su aplicación lista para compartir su
-                        historial con su médico, y tendrá comodidades que no tendría de otra manera.
+                        con los datos más relevantes. Después de unos sencillos pasos, tendrá su aplicación lista para buscar un médico de su agrado,
+                        y tendrá comodidades que no tendría de otra manera.
                     </p>
                     <p><a class="btn btn-primary btn-lg" href="registro.jsp" role="button">Registrate ya »</a></p>
                     <p style="text-align:right;">Ya forman parte: 

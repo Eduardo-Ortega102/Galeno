@@ -1,6 +1,7 @@
 package controller;
 
 import static controller.FacadeFactory.citaFacade;
+import static controller.FacadeFactory.historiaFacade;
 import static controller.FacadeFactory.historialFacade;
 import entities.Cita;
 import entities.Historia;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public final class EntityFactory {
 
-    private static Integer generateCitaId(Paciente paciente) {
+    private static Integer generateCitaId() {
         List<Cita> citas = citaFacade().findAll();
         Collections.sort(citas, new Comparator<Cita>() {
             @Override
@@ -36,6 +37,17 @@ public final class EntityFactory {
             }
         });
         return historiales.get(historiales.size() - 1).getId() + 1;
+    }
+
+    private static Integer generateHistoriaId() {
+        List<Historia> historias = historiaFacade().findAll();
+        Collections.sort(historias, new Comparator<Historia>() {
+            @Override
+            public int compare(Historia o1, Historia o2) {
+                return Integer.compare(o1.getId(), o2.getId());
+            }
+        });
+        return historias.get(historias.size() - 1).getId() + 1;
     }
     
 
@@ -63,11 +75,11 @@ public final class EntityFactory {
         return new Historial(historialId, fecha, notas, paciente);
     }
     
-    public static Historia historia(HttpServletRequest request,int historiaId) {
+    public static Historia historia(HttpServletRequest request) {
         String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String descripcion = request.getParameter("descripcion");
         String tratamiento = request.getParameter("tratamiento");
-        Historia historia = new Historia(historiaId,fecha,descripcion);
+        Historia historia = new Historia(generateHistoriaId(),fecha,descripcion);
         historia.setTratamiento(tratamiento);
         historia.setMedico((Medico)request.getSession().getAttribute("user"));
         historia.setHistorial((Historial)request.getSession().getAttribute("history"));
@@ -76,7 +88,7 @@ public final class EntityFactory {
     }
 
     public static Cita cita(HttpServletRequest request, Paciente paciente) {
-        Integer citaId = generateCitaId(paciente);
+        Integer citaId = generateCitaId();
         Cita cita = new Cita(citaId, request.getParameter("fecha"), request.getParameter("hora"));
         cita.setMedico(FacadeFactory.medicoFacade().find(request.getParameter("medico")));
         cita.setPaciente(paciente);

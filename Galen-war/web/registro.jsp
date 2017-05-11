@@ -12,7 +12,7 @@
         <%
             if (request.getParameter("error") != null) {
                 out.println("<div class=\"alert alert-danger\">");
-                out.println("Este usuario con el DNI o Numero de colegiado ya está dado de alta");
+                out.println("El usuario ya está dado de alta");
                 out.println("</div>");
             }
         %>
@@ -66,8 +66,8 @@
                                     <input id="nacimientoUsuario" name="nacimientoUsuario" required="required" type="date" value="1990-01-01"/>
                                 </p>
                                 <p> 
-                                    <label>Nombre las alergias y/o enfermedades que tiene(si deja el campo vacío se entiende que no tiene ninguna): </label>
-                                    <input id="alergiasPaciente" name="alergiasPaciente" type="text" placeholder="" />
+                                    <label>Nombre las alergias y/o enfermedades que tiene: </label>
+                                    <input id="alergiasPaciente" required="required" name="alergiasPaciente" type="text" placeholder="" />
                                 </p>
                             </div>
 

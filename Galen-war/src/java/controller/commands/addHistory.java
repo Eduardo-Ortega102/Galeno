@@ -11,7 +11,7 @@ public class addHistory extends FrontCommand {
     
     @Override
     public void process() {
-        Historia nuevaHistoria = historia(request,historiaFacade().count());
+        Historia nuevaHistoria = historia(request);
         historiaFacade().create(nuevaHistoria);
         Historial historial = (Historial)request.getSession().getAttribute("history");
         Collection<Historia> historiasPaciente = historial.getHistoriaCollection();

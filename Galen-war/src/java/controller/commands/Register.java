@@ -42,10 +42,17 @@ public class Register extends FrontCommand{
     }
 
     private boolean existPatient() {
-        return pacienteFacade().find(request.getParameter("dniUsuario")) != null;
+        return pacienteFacade().find(request.getParameter("dniUsuario")) != null ||
+                existEmail();
     }
 
     private boolean existDoctor() {
-        return medicoFacade().find(request.getParameter("ncolegiadoMedico")) != null;
+        return medicoFacade().find(request.getParameter("ncolegiadoMedico")) != null||
+                existEmail();
+    }
+    
+    private boolean existEmail() {
+        return pacienteFacade().findByEmail(request.getParameter("emailUsuario")) != null ||
+                medicoFacade().findByEmail(request.getParameter("emailUsuario")) != null ;
     }
 }
